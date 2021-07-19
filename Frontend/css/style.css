@@ -1,0 +1,174 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#first
+{
+    background-color: rgba0,255,0,0.7;
+    width: 100vw;
+    height: 17vh;
+    margin-top: -18vh;
+    padding-left: 19vw;
+}
+#logo
+{
+    height: 17vh;
+    width: 15w;
+}
+
+.navbar
+{
+    
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 5vh;
+    color: slategray;
+    font-size: 4vh;
+    margin-right: 4vw;
+
+}
+#second
+{
+    height: 83vh;
+    background: url(../assets/second_div_bg.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+input
+{
+    width: 50vw;
+    border-radius: 2vw;
+    height: 7vh;
+    font-size: 4vh;
+    padding-left: 2vw;
+    margin-top: 38vh;
+    border: 1px solid black;
+}
+button
+{
+    height: 6vh ;
+    width: 6vw;
+    font-size: 1.5vw;
+    border: 2px solid black;
+    padding: 0.3vh 0.5vw;
+    background-color: whitesmoke;
+
+}
+#medicine
+{
+    width: 100vw;
+    height: 100vh;
+}
+.card
+{
+    display: inline-block;
+    width: 25vw;
+    height: 65vh;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+    margin: 3vh 5vw;
+    background-color: whitesmoke;
+    font-size: 2.2vh;
+    position: absolute;
+}
+h1
+{
+    font-size: 10vh;
+    margin-left: 5vw;
+    margin-top: 3vh;
+    color: slategray;
+}
+.card_img
+{
+    width: 23vw;
+    padding: 1vh 1vw;
+    height: 30vh;
+}
+.card:hover .card_img
+{
+    width: 24vw;
+    height: 32vh;
+}
+.card:hover
+{
+    margin-top: 3vh;
+    width: 26vw;
+    height: 67vh ;
+    border: 0px;
+    background-color: #FFFAEF;
+    font-size: 2.3vh;
+}
+a:hover
+{
+    color: black;
+}
+#wo
+{
+    margin-left: 35vw;
+}
+#news
+{
+    padding-left: 33vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F0F8FE;
+}
+#footer
+{
+    height: 40vh;
+    background-color: #7393B3;
+    color: whitesmoke;
+    padding-left: 5vw;
+    padding-top: 5vh;
+}
+#foo
+{
+    border-bottom: 2px solid whitesmoke;
+    width: 87vw;
+}
+#pic
+{
+    width: 8vw;
+    margin-top: 2vh;
+    border-radius: 50%;
+    margin-left: 2vw;
+}
+#profile
+{
+    margin-top: -19.5vh;
+    color: slategray;
+    padding-left: 11vw;
+    padding-top: 4vh;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F0F8FE;
+}
+#med_data
+{
+    font-size: 6vh;
+    margin-left:0vw;
+    margin-left: 30vw;
+}
+.card_profile
+{
+    width: 15vw;
+    height: 23vh;
+    background-color: 	#B7E9F7;
+    display: inline-block;
+    padding: 1vh 3vw;
+    margin-left: 4vw;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.card_profile:hover
+{
+    background-color: #92DFF3;
+    border: 0px;
+    font-size: 2vh;
+}
