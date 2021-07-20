@@ -38,25 +38,37 @@
     background-attachment: fixed;
     text-align: center;
 }
+#SearchEdit{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+}
+#SearchEdit img{
+    height: 2.7vw;
+    width: 2.7vw;
+}
 input
 {
     width: 50vw;
-    border-radius: 2vw;
+    border-radius: 2vw 0 0 2vw;
     height: 7vh;
     font-size: 4vh;
     padding-left: 2vw;
     margin-top: 38vh;
-    border: 1px solid black;
+    border: 1px solid white;
+    outline: none;
 }
 button
 {
-    height: 6vh ;
+    height: 7vh ;
     width: 6vw;
     font-size: 1.5vw;
-    border: 2px solid black;
+    border-color: white;
+    border-radius: 0 2vw 2vw 0;
     padding: 0.3vh 0.5vw;
-    background-color: whitesmoke;
-
+    margin-top: 38vh;
+    background-color: white;
+    outline: none;
 }
 #medicine
 {
