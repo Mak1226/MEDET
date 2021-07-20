@@ -7,7 +7,6 @@
 
 #first
 {
-    background-color: rgba0,255,0,0.7;
     width: 100vw;
     height: 17vh;
     margin-top: -18vh;
@@ -16,7 +15,7 @@
 #logo
 {
     height: 17vh;
-    width: 15w;
+    
 }
 
 .navbar
