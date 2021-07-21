@@ -144,6 +144,19 @@
     padding: 10px;
     font-size: 18px;
 }
+#footer
+{
+    height: 45vh;
+    background-color: #7393B3;
+    color: whitesmoke;
+    padding-left: 5vw;
+    padding-top: 5vh;
+}
+#foo
+{
+    border-bottom: 2px solid whitesmoke;
+    width: 87vw;
+}
 @media (max-width: 991px)
 {
     .contact
