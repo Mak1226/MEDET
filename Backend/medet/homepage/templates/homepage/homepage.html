@@ -1,0 +1,53 @@
+{% extends 'homepage/base.html'%}
+{%load static%}
+{% block content%}
+
+<div id="second">
+    <form id="form" action="">
+        <section id="SearchEdit">
+            <input id="home_input" type="text" name="search" placeholder="search">
+            <button type="submit"><img src="{% static 'homepage/R.png' %}"></button>
+        </section>
+    </form>
+</div>
+<div id="medicine">
+    <h1>Medicine Recommendations</h1>
+    
+    <div class="card">
+        <img class="card_img" src="{%static 'homepage/GLYCODIN-SYRUP-100-ML.jpg'%}" alt="">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adip solo elit. Ratione rem libero quis necessitatibus illum tempore dolorum perferendis doloribus doloremque temporibus ad, quisquam repellendus cum ex inventore. Reiciendis earum ducimus dicta rerum deserunt! In nisi quo fuga iusto! Mollitia, saepe voluptatibus animi tenetur, dolore eaque sed illum, laudantium laborum cum magnam explicabo accusantium at obcaecati repellat doloremque temporibus consequuntur possimus rerum eius quidem quasi voluptate adipisci! Adipisci ipsum debitis earum minus.
+        </p>
+    </div>
+    <div class="card" id="wo">
+        <img class="card_img" src="{%static 'homepage/paracetamol-tablets_1618901822.jpg'%}" alt="">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adip solo elit. Ratione rem libero quis necessitatibus illum tempore dolorum perferendis doloribus doloremque temporibus ad, quisquam repellendus cum ex inventore. Reiciendis earum ducimus dicta rerum deserunt! In nisi quo fuga iusto! Mollitia, saepe voluptatibus animi tenetur, dolore eaque sed illum, laudantium laborum cum magnam explicabo accusantium at obcaecati repellat doloremque temporibus consequuntur possimus rerum eius quidem quasi voluptate adipisci! Adipisci ipsum debitis earum minus.
+        </p>
+    </div>
+</div>
+<div id="news">
+    <h1>News related to Health</h1>
+    <br>
+    
+    <div class="card">
+        <h2> Topic 1</h2>
+        <br>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adip solo elit. Reprehenderit deserunt excepturi enim delectus odit repellat voluptas aliquid obcaecati ipsam nesciunt doloribus perspiciatis magni, odio, aliquam hic placeat facilis inventore exercitationem nihil architecto dolore illo? Porro saepe consequuntur provident ab distinctio quaerat eum. Laudantium aspernatur excepturi distinctio id sint assumenda aut magni est, facere eligendi, rem ab ipsum maiores repellendus sed autem aperiam, nam totam blanditiis nesciunt deserunt temporibus reprehenderit. Aut, explicabo et hic facere placeat ea iure minus dolore sequi dicta minima obcaecati tempore eveniet totam consequuntur asperiores velit sit! Quisquam possimus nostrum nam odio cumque vitae, sapiente praesentium alias consequuntur ea, aspernatur nemo laudantium repudiandae. Distinctio modi eum provident nesciunt dolores, nemo deleniti explicabo id impedit natus facilis asperiores doloremque atque totam consequatur sit.
+        </p>
+    </div>
+    <div class="card" id="wo">
+        <h2> Topic 1</h2>
+        <br>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adip solo elit. Reprehenderit deserunt excepturi enim delectus odit repellat voluptas aliquid obcaecati ipsam nesciunt doloribus perspiciatis magni, odio, aliquam hic placeat facilis inventore exercitationem nihil architecto dolore illo? Porro saepe consequuntur provident ab distinctio quaerat eum. Laudantium aspernatur excepturi distinctio id sint assumenda aut magni est, facere eligendi, rem ab ipsum maiores repellendus sed autem aperiam, nam totam blanditiis nesciunt deserunt temporibus reprehenderit. Aut, explicabo et hic facere placeat ea iure minus dolore sequi dicta minima obcaecati tempore eveniet totam consequuntur asperiores velit sit! Quisquam possimus nostrum nam odio cumque vitae, sapiente praesentium alias consequuntur ea, aspernatur nemo laudantium repudiandae. Distinctio modi eum provident nesciunt dolores, nemo deleniti explicabo id impedit natus facilis asperiores doloremque atque totam consequatur sit.
+        </p>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content%}

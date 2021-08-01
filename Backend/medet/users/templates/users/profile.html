@@ -1,0 +1,69 @@
+{% extends  "/home/ayush/github/MEDET/Backend/medet/homepage/templates/homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+        <div id="profile">
+            <img id="pic" src="{{user.profile.image.url}}" alt="">
+            {% if user.first_name %}
+            <h2 class="username">Name: {{user.first_name}}</h1>
+            {%else%}
+            <h2 class="username">Username: {{user.username }}</h1>
+            {%endif%}
+            <h2>Age:20</h2>
+            <h2>Date Of Birth: 17/01/2001</h2>
+            {%if user.email%} 
+            <h2 class="email">{{user.email}}</h2>
+            {%endif%}
+            <div id="data">
+                <h1 id="med_data">Medical data</h1>
+                <br>
+                <br>
+                <br>
+                
+                <div class="card_profile">
+                    <h3>My medicines</h3>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                    </ul>
+                </div>
+                <div class="card_profile">
+                    <h3>My Doctors</h3>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                    </ul>
+                </div>
+                <div class="card_profile">
+                    <h3>My Schedule</h3>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                    </ul>
+                </div>
+                <div class="card_profile">
+                    <h3>My Diseases</h3>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+{% endblock content%}
