@@ -178,6 +178,11 @@ a:hover
     font-size: 2vh;
 }
 
+.con {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .left {
     background-color: #d1f1de;
     padding-top: 5vh;
