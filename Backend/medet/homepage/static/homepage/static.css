@@ -53,7 +53,7 @@ a
     border: 1px solid white;
     outline: none;
 }
-button
+#searchEdit button
 {
     height: 7vh ;
     width: 6vw;
@@ -150,7 +150,7 @@ a:hover
     padding-left: 11vw;
     padding-top: 4vh;
     width: 100vw;
-    height: 100vh;
+    height: 180vh;
     background-color: #F0F8FE;
 }
 #med_data
@@ -444,4 +444,18 @@ hr{
     {
         width: 100%;
     }
+}
+#update
+{
+    color: #fff;
+    width:5vw ;
+    padding:10px ;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline:none;
+    cursor: pointer;
+    background-color: #1c8adb;
+
 }

@@ -2,17 +2,64 @@
 {% load crispy_forms_tags%}
 {% block content%}
         <div id="profile">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert-{{message.tags}}">
+                {{message}}
+            </div>
+            {%endfor%} 
+            {%endif%}
             <img id="pic" src="{{user.profile.image.url}}" alt="">
             {% if user.first_name %}
             <h2 class="username">Name: {{user.first_name}}</h1>
             {%else%}
             <h2 class="username">Username: {{user.username }}</h1>
             {%endif%}
-            <h2>Age:20</h2>
-            <h2>Date Of Birth: 17/01/2001</h2>
-            {%if user.email%} 
-            <h2 class="email">{{user.email}}</h2>
+            {% if user.profile.age %}
+            <h2 >Age: {{user.profile.age}}</h1>
+            {%else%}
+            <h2 >Age: </h1>
             {%endif%}
+            {% if user.profile.date_of_birth %}
+            <h2 >Date Of Birth: {{user.profile.date_of_birth}}</h1>
+            {%else%}
+            <h2 >Date Of Birth: </h1>
+            {%endif%}
+            {%if user.email%} 
+            <h2 class="email">Email: {{user.email}}</h2>
+            {%endif%}
+            {% if user.profile.contact %}
+            <h2 >Contacts: {{user.profile.contact}}</h1>
+            {%else%}
+            <h2 >Contacts: </h1>
+            {%endif%}
+            {% if user.profile.address %}
+            <h2 >Address: {{user.profile.address}}</h1>
+            {%else%}
+            <h2 >Address: </h1>
+            {%endif%}
+            {% if user.profile.blood_type %}
+            <h2 >Blood Type: {{user.profile.blood_type}}</h1>
+            {%else%}
+            <h2 >Blood Type: </h1>
+            {%endif%}
+            {% if user.profile.allergy %}
+            <h2 >Allergies: {{user.profile.allergy}}</h1>
+            {%else%}
+            <h2 >Allergies: </h1>
+            {%endif%}
+            {% if user.profile.weight %}
+            <h2 >Weight(in Kg): {{user.profile.weight}}</h1>
+            {%else%}
+            <h2 >Weight(in Kg): </h1>
+            {%endif%}
+            {% if user.profile.height %}
+            <h2 >Height(in cm): {{user.profile.height}}</h1>
+            {%else%}
+            <h2 >Height(in cm): </h1>
+            {%endif%}
+            <br>
+            <a href="{%url 'profile_update'%}">Update Profile</a>
             <div id="data">
                 <h1 id="med_data">Medical data</h1>
                 <br>
@@ -24,10 +71,9 @@
                     <br>
                     <br>
                     <ul>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
+                        {% for medicine in medicines%}
+                        <li>{{medicine.medicine_name}}</li>
+                        {%endfor%}
                     </ul>
                 </div>
                 <div class="card_profile">
