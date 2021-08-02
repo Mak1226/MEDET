@@ -1,0 +1,23 @@
+{% extends "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{%load static%}
+{% block content%}
+<div class="body">
+    <div class="sign-form" >
+        <img src="{% static 'homepage/2.png'%}">
+        <h2>
+            Sign Up
+        </h2>
+        <form class="form" method="POST">
+            {%csrf_token%} 
+                    {{form|crispy}}
+                    <br>
+                    <br>
+            <button type="submit" class="Sign-btn">Sign Up</button>
+            <hr>
+            <p class="or">OR</p>
+            <p>Already Have An Account? <a id="signforma" href="{%url 'login'%}">Sign In</a></p>
+        </form>
+    </div>
+</div>
+{% endblock content%}
