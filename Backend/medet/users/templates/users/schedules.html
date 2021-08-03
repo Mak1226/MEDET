@@ -1,0 +1,16 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div >
+        <h1>My Schedules</h3>
+        <br>
+        <br>
+        <ul>
+            {% for schedule in schedules%}
+            <li><a href="{% url 'profile_schedule_detail' schedule.id %}" style="color: slategray;">{{schedule.schedule}}</a></li>
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+
+{% endblock content%}

@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views
+from users.views import MedicineDetailView,MedicineCreateView,MedicineUpdateView,MedicineDeleteView
+from users.views import DoctorDetailView,DoctorCreateView,DoctorUpdateView,DoctorDeleteView,ScheduleDetailView
+from users.views import DiseaseDetailView,DiseaseCreateView,DiseaseUpdateView,DiseaseDeleteView
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,6 +28,30 @@ urlpatterns = [
     path('', include("homepage.urls")),
     path('register/',user_views.register,name="register"),
     path('profile/',user_views.profile,name="profile"),
+    path('profile/medicine/',user_views.medicine,name="profile_medicine"),
+    path('profile/disease/',user_views.disease,name="profile_disease"),
+    path('profile/doctor/',user_views.doctor,name="profile_doctor"),
+    path('profile/schedule/',user_views.schedule,name="profile_schedule"),
+
+    path('profile/doctor/<int:pk>/',DoctorDetailView.as_view(),name="profile_doc_detail"),
+    path('profile/doctor/new/',DoctorCreateView.as_view(),name="profile_doc_create"),
+    path('profile/doctor/<int:pk>/update/',DoctorUpdateView.as_view(),name="profile_doc_update"),
+    path('profile/doctor/<int:pk>/delete/',DoctorDeleteView.as_view(),name="profile_doc_delete"),
+
+    path('profile/schedule/<int:pk>/',ScheduleDetailView.as_view(),name="profile_schedule_detail"),
+
+    path('profile/disease/<int:pk>/',DiseaseDetailView.as_view(),name="profile_disease_detail"),
+    path('profile/disease/new/',DiseaseCreateView.as_view(),name="profile_disease_create"),
+    path('profile/disease/<int:pk>/update/',DiseaseUpdateView.as_view(),name="profile_disease_update"),
+    path('profile/disease/<int:pk>/delete/',DiseaseDeleteView.as_view(),name="profile_disease_delete"),
+
+
+
+    path('profile/medicine/<int:pk>/',MedicineDetailView.as_view(),name="profile_med_detail"),
+    path('profile/medicine/new/',MedicineCreateView.as_view(),name="profile_med_create"),
+    path('profile/medicine/<int:pk>/update/',MedicineUpdateView.as_view(),name="profile_med_update"),
+    path('profile/medicine/<int:pk>/delete/',MedicineDeleteView.as_view(),name="profile_med_delete"),
+
     path('profile_update/',user_views.profile_update,name="profile_update"),
     path('login/',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout')

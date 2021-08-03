@@ -1,0 +1,19 @@
+{% extends "homepage/base.html" %}
+{%load static%}
+{% block content%}
+<div class="body">
+    <div class="sign-form" >
+        <h1>
+            Delete Doctor
+        </h1>
+        <form class="form" method="POST">
+            {%csrf_token%} 
+            <h2>Are you sure you want to delete {{object.doctor_name}}'s Profile</h2>
+                    <br>
+                    <br>
+            <button type="submit" class="Sign-btn">Yes,Delete</button>
+            <a href="{% url 'profile_doc_detail' object.id %}" class="Sign-btn">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock content%}

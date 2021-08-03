@@ -1,0 +1,21 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div >
+        <h1>{{object.medicine_name}}</h1>
+        <br>
+        <br>
+        {%if object.image %}
+        <img id="pic" src="{{object.image.url}}" alt="">
+        {%endif%}
+        <h2>Disease: {{object.disease_name}}</h2>
+        <h2>When to Take: {{object.schedule}}</h2>
+        <h2>Prescribed by: {{object.doctor_name}}</h2>
+        <br>
+        <br>
+        <a class="Sign-btn"  href="{%url 'profile_med_update' object.id %}">Update Medicine</a>
+        <a class="Sign-btn"  href="{%url 'profile_med_delete' object.id %}">Delete Medicine</a>
+        
+    </div>
+
+{% endblock content%}

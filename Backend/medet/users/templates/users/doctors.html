@@ -1,0 +1,17 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div >
+        <h1>My Doctors</h3>
+        <a class="Sign-btn"  href="{%url 'profile_doc_create' %}">Add Doctors</a>
+        <br>
+        <br>
+        <ul>
+            {% for doctor in doctors%}
+            <li><a href="{%url 'profile_doc_detail' doctor.id%}" style="color: slategray;">{{doctor.doctor_name}}</a></li>
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+
+{% endblock content%}

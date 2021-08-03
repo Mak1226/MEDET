@@ -66,7 +66,7 @@
                 <br>
                 <br>
                 
-                <div class="card_profile">
+                <a href="{% url 'profile_medicine'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My medicines</h3>
                     <br>
                     <br>
@@ -75,40 +75,37 @@
                         <li>{{medicine.medicine_name}}</li>
                         {%endfor%}
                     </ul>
-                </div>
-                <div class="card_profile">
+                </div></a>
+                <a href="{% url 'profile_doctor'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My Doctors</h3>
                     <br>
                     <br>
                     <ul>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
+                        {% for doctor in doctors%}
+                        <li>{{doctor.doctor_name}}</li>
+                        {%endfor%}
                     </ul>
-                </div>
-                <div class="card_profile">
+                </div></a>
+                <a href="{% url 'profile_disease'%}" style="color: slategray;"><div class="card_profile">
+                    <h3>My disease</h3>
+                    <br>
+                    <br>
+                    <ul>
+                        {% for disease in diseases%}
+                        <li>{{disease.disease_name}}</li>
+                        {%endfor%}
+                    </ul>
+                </div></a>
+                <a href="{% url 'profile_schedule'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My Schedule</h3>
                     <br>
                     <br>
                     <ul>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
+                        {% for schedule in schedules%}
+                        <li>{{schedule.schedule}}</li>
+                        {%endfor%}
                     </ul>
-                </div>
-                <div class="card_profile">
-                    <h3>My Diseases</h3>
-                    <br>
-                    <br>
-                    <ul>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                        <li>lorem</li>
-                    </ul>
-                </div>
+                </div></a>
             </div>
         </div>
         

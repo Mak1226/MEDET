@@ -2,11 +2,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .forms import UserRegistrationForm, UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required 
-from .models import Medicine,Profile
-from django.views.generic import ListView
+from .models import Medicine,Disease,Doctor
+from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
+from django import forms
 
 
 # Create your views here.
@@ -31,7 +32,12 @@ def register(request):
 
 @login_required
 def profile(request):
-    context={'medicines':Medicine.objects.filter(user=self.request.user)}
+    context={
+        'medicines':Medicine.objects.filter(user=request.user.id)[:4][::-1],
+        'diseases':Disease.objects.filter(user=request.user.id)[:4][::-1],
+        'schedules':Medicine.objects.filter(user=request.user.id)[:4][::-1],
+        'doctors':Doctor.objects.filter(user=request.user.id)[:4][::-1]
+    }
     return render(request,'users/profile.html',context)
 
 @login_required
@@ -49,3 +55,172 @@ def profile_update(request):
         p_form=ProfileUpdateForm(instance=request.user.profile)
     context={'u_form':u_form,'p_form':p_form}
     return render(request,'users/profile_update.html',context)
+
+def medicine(request):
+    context={'medicines':Medicine.objects.filter(user=request.user.id)[::-1]}
+    return render(request,'users/medcines.html',context)
+
+def doctor(request):
+    context={'doctors':Doctor.objects.filter(user=request.user.id)[::-1]}
+    return render(request,'users/doctors.html',context)
+
+def schedule(request):
+    context={'schedules':Medicine.objects.filter(user=request.user.id)[::-1]}
+    return render(request,'users/schedules.html',context)
+
+def disease(request):
+    context={'diseases':Disease.objects.filter(user=request.user.id)[::-1]}
+    return render(request,'users/diseases.html',context)
+
+class MedicalForm(forms.ModelForm):
+    class Meta:
+       model = Medicine
+       fields=['medicine_name','disease_name','schedule','doctor_name','image']
+
+    def __init__(self, *args, **kwargs):
+       user = kwargs.pop('user')
+       super(MedicalForm, self).__init__(*args, **kwargs)
+       self.fields['doctor_name'].queryset = Doctor.objects.filter(user=user)
+       self.fields['disease_name'].queryset = Disease.objects.filter(user=user)
+
+
+
+class MedicineDetailView(LoginRequiredMixin,UserPassesTestMixin,DetailView):
+    model=Medicine
+
+    def test_func(self):
+        medicine=self.get_object()
+        if self.request.user == medicine.user:
+            return True
+        return False
+
+class MedicineCreateView(LoginRequiredMixin,CreateView):
+    model=Medicine
+    form_class = MedicalForm
+
+    def get_form_kwargs(self):
+        kwargs = super(MedicineCreateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+
+
+    def form_valid(self,form):
+        
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+class MedicineUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
+    model=Medicine
+    form_class = MedicalForm
+
+    def get_form_kwargs(self):
+        kwargs = super(MedicineUpdateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        medicine=self.get_object()
+        if self.request.user == medicine.user:
+            return True
+        return False
+
+class MedicineDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=Medicine
+    success_url='/profile/medicine/'
+
+    def test_func(self):
+        medicine=self.get_object()
+        if self.request.user == medicine.user:
+            return True
+        return False
+
+
+class DoctorDetailView(LoginRequiredMixin,UserPassesTestMixin,DetailView):
+    model=Doctor
+
+    def test_func(self):
+        doctor=self.get_object()
+        if self.request.user == doctor.user:
+            return True
+        return False
+
+class DoctorUpdateView(LoginRequiredMixin,UpdateView):
+    model=Doctor
+    fields=['doctor_name','address','contact']
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+class DoctorCreateView(LoginRequiredMixin,CreateView):
+    model=Doctor
+    fields=['doctor_name','address','contact']
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+
+
+class DoctorDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=Doctor
+    success_url='/profile/doctor/'
+
+    def test_func(self):
+        medicine=self.get_object()
+        if self.request.user == medicine.user:
+            return True
+        return False
+
+
+
+class DiseaseDetailView(LoginRequiredMixin,UserPassesTestMixin,DetailView):
+    model=Disease
+
+    def test_func(self):
+        disease=self.get_object()
+        if self.request.user == disease.user:
+            return True
+        return False
+
+class DiseaseUpdateView(LoginRequiredMixin,UpdateView):
+    model=Disease
+    fields=['disease_name','disease_type','onset_of_disease','symptoms','affected_area']
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+class DiseaseCreateView(LoginRequiredMixin,CreateView):
+    model=Disease
+    fields=['disease_name','disease_type','onset_of_disease','symptoms','affected_area']
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+
+
+class DiseaseDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=Disease
+    success_url='/profile/disease/'
+
+    def test_func(self):
+        medicine=self.get_object()
+        if self.request.user == medicine.user:
+            return True
+        return False
+
+class ScheduleDetailView(LoginRequiredMixin,UserPassesTestMixin,DetailView):
+    model=Medicine
+
+    def test_func(self):
+        schedule=self.get_object()
+        if self.request.user == schedule.user:
+            return True
+        return False
