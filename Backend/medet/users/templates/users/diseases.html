@@ -7,10 +7,14 @@
         <br>
         <br>
         <ul>
+            {%if diseases%}
             {% for disease in diseases%}
             <li><a href="{%url 'profile_disease_detail' disease.id %}" style="color: slategray;">{{disease.disease_name}}</a></li>
             <br>
             {%endfor%}
+            {%else%}
+            <h2>No diseases</h2>
+            {%endif%}
         </ul>
     </div>
 

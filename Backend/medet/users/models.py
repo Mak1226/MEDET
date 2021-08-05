@@ -8,8 +8,8 @@ from django.urls import reverse
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     image=models.ImageField(default='default.jpg',upload_to='profile_pics')
-    age=models.PositiveIntegerField(null=True,blank=True)
-    date_of_birth=models.DateField(null=True,blank=True)
+    age=models.PositiveIntegerField(null=True)
+    date_of_birth=models.DateField(null=True)
     blood_type=models.CharField(max_length=3,null=True,blank=True)
     weight=models.PositiveIntegerField(null=True,blank=True)
     height=models.PositiveIntegerField(null=True,blank=True)
@@ -58,6 +58,16 @@ class Medicine(models.Model):
     def get_absolute_url(self):
         return reverse('profile_medicine')
 
+class Reports(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    title=models.CharField(max_length=200,null=True,blank=True)
+    medical_report=models.ImageField(upload_to='med_report',null=True)
+    description=models.TextField(null=True,blank=True)
 
+    def get_absolute_url(self):
+        return reverse('profile_med_reports')
+
+    def __str__(self):
+        return self.title
 
 

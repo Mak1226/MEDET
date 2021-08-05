@@ -1,12 +1,20 @@
 {% extends 'homepage/base.html'%}
+{% load crispy_forms_tags%}
 {%load static%}
 {% block content%}
 <section class="contact">
     <div class="content">
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert-{{message.tags}}">
+            {{message}}
+        </div>
+        {%endfor%} 
+        {%endif%}
       <h2>Contact Us</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ratione ad
-        omnis natus at cumque atque et accusantium aut quae.
+        Have some Problems with the Website? Or would like to give some Suggestions?
+        We are all ears, Drop a message!!
       </p>
     </div>
     <div class="container">
@@ -37,20 +45,10 @@
         </div>
       </div>
       <div class="contactForm">
-          <form>
-              <h2>Send Message</h2>
-              <div class="inputBox">
-                  <input type="text" name="" id="" required="required">
-                  <span>Full Name</span>
-              </div>
-              <div class="inputBox">
-                  <input type="text" name="" id="" required="required">
-                  <span>Email</span>
-              </div>
-              <div class="inputBox">
-                  <textarea required="required"></textarea>
-                  <span>Type your Message...</span>
-              </div>
+          <form class="form" method="POST">
+            <h2>Send Message</h2>
+            {%csrf_token%}
+            {{form | crispy}}
               <div class="inputBox">
                   <input type="submit" name="" value="send">
               </div>

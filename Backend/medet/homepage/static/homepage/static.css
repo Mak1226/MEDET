@@ -74,7 +74,7 @@ a
 {
     display: inline-block;
     width: 25vw;
-    height: 66.5vh;
+    height: 73vh;
     border: 2px solid black;
     border-radius: 5px;
     padding: 1vh 1vw;
@@ -96,19 +96,10 @@ h1
     padding: 1vh 1vw;
     height: 30vh;
 }
-.card:hover .card_img
-{
-    width: 24vw;
-    height: 32vh;
-}
 .card:hover
 {
-    margin-top: 3vh;
-    width: 26vw;
-    height: 69vh ;
     border: 0px;
     background-color: #FFFAEF;
-    font-size: 2.3vh;
 }
 a:hover
 {
@@ -167,6 +158,7 @@ a:hover
     display: inline-block;
     padding: 1vh 3vw;
     margin-left: 4vw;
+    margin-top: 5vw;
     border: 2px solid black;
     border-radius: 10px;
 }
@@ -175,7 +167,6 @@ a:hover
 {
     background-color: #92DFF3;
     border: 0px;
-    font-size: 2vh;
 }
 
 .con {
@@ -462,4 +453,47 @@ hr{
     outline:none;
     cursor: pointer;
     background-color: #1c8adb;
+}
+.search
+{
+    border: 2px solid slategray;
+    border-radius: 10px;
+    padding:10px;
+    margin: 10px;
+}
+
+.card_news
+{
+    display: inline-block;
+    display: inline-block;
+    width:70vw;
+    height: 66.5vh;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+    margin: 3vh 5vw;
+    background-color: whitesmoke;
+    font-size: 2.2vh;
+}
+.card_news:hover
+{
+    border: 0px;
+    background-color: #FFFAEF;
+}
+.card_news img
+{
+    width: auto;
+    padding: 1vh 1vw;
+    height: 30vh;
+}
+#news_all
+{
+    text-align: center;
+    width: 100vw;
+    height: auto;
+    background-color: #F0F8FE;
+}
+#news_all h1
+{
+    margin-left: -1vw;
 }

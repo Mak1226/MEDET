@@ -6,10 +6,14 @@
         <br>
         <br>
         <ul>
+            {%if schedules%}
             {% for schedule in schedules%}
-            <li><a href="{% url 'profile_schedule_detail' schedule.id %}" style="color: slategray;">{{schedule.schedule}}</a></li>
+            <li><a href="{% url 'profile_med_detail' schedule.id %}" style="color: slategray;">{{schedule.schedule}}</a></li>
             <br>
             {%endfor%}
+            {%else%}
+            <h2>No Schedules</h2>
+            {%endif%}
         </ul>
     </div>
 

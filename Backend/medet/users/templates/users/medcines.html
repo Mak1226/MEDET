@@ -2,15 +2,19 @@
 {% load crispy_forms_tags%}
 {% block content%}
     <div >
-        <h1>My medicines</h3>
+        <h1>My medicines</h1>
         <a class="Sign-btn"  href="{%url 'profile_med_create' %}">Add Medicine</a>
         <br>
         <br>
         <ul>
+            {%if medicines%}
             {% for medicine in medicines%}
             <li><a href="{%url 'profile_med_detail' medicine.id %}" style="color: slategray;">{{medicine.medicine_name}}</a></li>
             <br>
             {%endfor%}
+            {%else%}
+            <h2>No Medicines</h2>
+            {%endif%}
         </ul>
     </div>
 

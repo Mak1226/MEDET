@@ -2,15 +2,19 @@
 {% load crispy_forms_tags%}
 {% block content%}
     <div >
-        <h1>My Doctors</h3>
+        <h1>My Doctors</h1>
         <a class="Sign-btn"  href="{%url 'profile_doc_create' %}">Add Doctors</a>
         <br>
         <br>
         <ul>
+            {%if doctors%}
             {% for doctor in doctors%}
             <li><a href="{%url 'profile_doc_detail' doctor.id%}" style="color: slategray;">{{doctor.doctor_name}}</a></li>
             <br>
             {%endfor%}
+            {%else%}
+            <h2>No Doctors</h2>
+            {%endif%}
         </ul>
     </div>
 

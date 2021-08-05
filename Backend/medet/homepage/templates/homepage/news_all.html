@@ -1,0 +1,31 @@
+{% extends 'homepage/base.html'%}
+{%load static%}
+{% block content%}
+<div id="news_all">
+    <h1>News</h1>
+    <br>
+    {%for article in articles%}
+    <div class="card_news">
+        {% if article.urlToImage%}
+        <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
+        {%else%}
+        <img src="{%static 'homepage/no_img.jpg'%}" alt="">
+        {%endif%}
+        <h2> {{article.title}}</h2>
+        <br>
+        <h2>{{article.author}}</h2>
+        <br>
+        <p>{{article.description}}</p>
+        <a href="{{article.url}}" target="_blank">Read Full Article</a>
+    </div>
+    <br>
+    <br>
+    {%endfor%}
+    
+</div>
+
+
+
+
+
+{% endblock content%}

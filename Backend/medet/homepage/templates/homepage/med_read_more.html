@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'homepage/static.css'%}">
+    <title>MEDET</title>
+</head>
+<body>
+    <div >
+        <div class="search">
+            {%for medicine in medicines %}
+            <h1> {{medicine.openfda.generic_name.0}}</h1>
+            <br>
+            <h2>Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h2>
+            <br>
+            <h2>Brand Name: {{medicine.openfda.brand_name.0}}</h2>
+            <br>
+            <p>{{medicine.indications_and_usage.0}}</p>
+            <br>
+            <p>{{medicine.precautions.0}}</p>
+            <br>
+            <p>{{medicine.description.0}}</p>
+            <br>
+            <p>{{medicine.dosage_and_administration.0}}</p>
+            <br>
+            <p>{{medicine.warnings.0}}</p>
+            {%endfor%}
+         </div>
+    </div>
+    
+</body>
+</html>
+    

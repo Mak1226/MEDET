@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .forms import UserRegistrationForm, UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required 
-from .models import Medicine,Disease,Doctor
+from .models import Medicine,Disease,Doctor,Reports
 from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
 from django import forms
 
@@ -71,6 +71,10 @@ def schedule(request):
 def disease(request):
     context={'diseases':Disease.objects.filter(user=request.user.id)[::-1]}
     return render(request,'users/diseases.html',context)
+
+def med_report(request):
+    context={'reports':Reports.objects.filter(user=request.user.id)[::-1]}
+    return render(request,'users/reports.html',context)
 
 class MedicalForm(forms.ModelForm):
     class Meta:
@@ -216,11 +220,41 @@ class DiseaseDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
             return True
         return False
 
-class ScheduleDetailView(LoginRequiredMixin,UserPassesTestMixin,DetailView):
-    model=Medicine
+
+
+class ReportsDetailView(LoginRequiredMixin,UserPassesTestMixin,DetailView):
+    model=Reports
 
     def test_func(self):
-        schedule=self.get_object()
-        if self.request.user == schedule.user:
+        reports=self.get_object()
+        if self.request.user == reports.user:
+            return True
+        return False
+
+class ReportsUpdateView(LoginRequiredMixin,UpdateView):
+    model=Reports
+    fields=['title','description','medical_report']
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+class ReportsCreateView(LoginRequiredMixin,CreateView):
+    model=Reports
+    fields=['title','description','medical_report']
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+
+
+class ReportsDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=Reports
+    success_url='/profile/reports/'
+
+    def test_func(self):
+        reports=self.get_object()
+        if self.request.user == reports.user:
             return True
         return False

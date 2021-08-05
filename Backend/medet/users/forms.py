@@ -20,12 +20,12 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     age=forms.IntegerField()
     date_of_birth=forms.DateField(localize=True,widget=forms.DateInput(format = '%Y-%m-%d',attrs={'type':'date'}))
-    contact=forms.CharField(max_length=10)
-    address=forms.TextInput()
-    blood_type=forms.CharField(max_length=3,)
-    allergy=forms.TextInput()
-    weight=forms.IntegerField()
-    height=forms.IntegerField()
+    contact=forms.CharField(max_length=10,)
+    address=forms.CharField(required=False)
+    blood_type=forms.CharField(max_length=3,required=False)
+    allergy=forms.CharField(max_length=500,required=False)
+    weight=forms.IntegerField(required=False)
+    height=forms.IntegerField(required=False)
 
     class Meta:
         model=Profile

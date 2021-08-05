@@ -1,0 +1,26 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div >
+        
+        {%if medicines.code %}
+        <h1>NOT FOUND</h1>
+        {%else%}
+        {%for medicine in medicines%}
+        {%if medicine.openfda.generic_name.0%}
+        <div class="search">
+            <h1> {{medicine.openfda.generic_name.0}}</h1>
+            <br>
+            <h2>Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h2>
+            <br>
+            <h2>Brand Name: {{medicine.openfda.brand_name.0}}</h2>
+            <br>
+            <a href="{% url 'med_read_more' medicine.openfda.spl_id.0  %}" target="_blank">Read More</a>
+            <br>
+         </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+    </div>
+
+{% endblock content%}
