@@ -7,12 +7,12 @@
         {%csrf_token%}
         <section id="SearchEdit">
             <input id="home_input" name="home_input" type="text" name="search" placeholder="Search">
-            <button type="submit"><img src="{% static 'homepage/R.png' %}"></button>
+            <button type="submit" id="homepage_search_btn"><img src="{% static 'homepage/R.png' %}"></button>
         </section>
     </form>
 </div>
 {%if user.is_authenticated %}
-<div id="medicine">
+<div id="medicine"><!-- not to touch -->
     <h1>Medicine Recommendations</h1>
     {%if user.disease %}
     <h1>{{user.disease.disease_name}}</h1>
@@ -35,44 +35,39 @@
 {%endif%}
 <div id="news">
     <h1>News related to Health</h1>
-    <br>
     {%for article in articles%}
-    <div class="card">
-        {% if article.urlToImage%}
-        <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
-        {%else%}
-        <img src="{% static 'homepage/no_img.jpg'%}" alt="">
-        {%endif%}
-        <h2> {{article.title}}</h2>
-        <br>
-        <h2>{{article.author}}</h2>
-        <br>
-        <p>{{article.description}}</p>
-        <a href="{{article.url}}" target="_blank">Read Full Article</a>
-    </div>
+    <section id="section_with_cards">
+        <div class="card">
+            {% if article.urlToImage%}
+            <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
+            {%else%}
+            <img src="{% static 'homepage/no_img.jpg'%}" alt="">
+            {%endif%}
+            <h2> {{article.title}}</h2>
+            <br>
+            <h2>{{article.author}}</h2>
+            <br>
+            <p>{{article.description}}</p>
+            <a href="{{article.url}}" target="_blank">Read Full Article</a>
+        </div>
+        {%endfor%}
+        {%for article in articles1%}
+        <div class="card" id="wo">
+            {% if article.urlToImage%}
+            <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
+            {%else%}
+            <img src="{% static 'homepage/no_img.jpg'%}" alt="">
+            {%endif%}
+            <h2> {{article.title}}</h2>
+            <br>
+            <h2>{{article.author}}</h2>
+            <br>
+            <p>{{article.description}}</p>
+            <a href="{{article.url}}" target="_blank">Read Full Article</a>
+        </div>
+    </section>
+    
     {%endfor%}
-    {%for article in articles1%}
-    <div class="card" id="wo">
-        {% if article.urlToImage%}
-        <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
-        {%else%}
-        <img src="{% static 'homepage/no_img.jpg'%}" alt="">
-        {%endif%}
-        <h2> {{article.title}}</h2>
-        <br>
-        <h2>{{article.author}}</h2>
-        <br>
-        <p>{{article.description}}</p>
-        <a href="{{article.url}}" target="_blank">Read Full Article</a>
-    </div>
-    {%endfor%}
-    <br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <a href="{%url 'news'%}">More News</a>
+    <a href="{%url 'news'%}" id="more_news">Click here for More News</a>
 </div>
-
-
-
-
-
 {% endblock content%}
