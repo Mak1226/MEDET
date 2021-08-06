@@ -33,7 +33,7 @@ a
     justify-content: space-around;
     margin-left: 25%;
 } 
-/* text properties inside nav bar */
+
 .navbar-nav a{
     text-decoration: none;
     font-size: 30px;
@@ -41,25 +41,15 @@ a
 nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     padding: 0px;
 }
-/* added using bootstrap */
-/* .navbar 
-{
-    
-    display: inline-block;
-    text-decoration: none;
-    margin-top: 5vh;
-    color: slategray;
-    font-size: 4vh;
-    margin-right: 4vw;
 
-} */
+
 
 #SearchEdit{
     display: flex;
     justify-content: center;
     align-items:flex-end ; 
 } 
-/* this is the css for homepage search button */
+
 #homepage_search_btn{
     padding: 0px;
     margin: 0px;
@@ -84,18 +74,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     border: 1px solid white;
     outline: none;
 }
-/* #searchEdit button
-{
-    height: 7vh ;
-    width: 6vw;
-    font-size: 1.5vw;
-    border-color: white;
-    border-radius: 0 2vw 2vw 0;
-    padding: 0.3vh 0.5vw;
-    margin-top: 38vh;
-    background-color: white;
-    outline: none;
-} */
+
 #medicine
 {
     width: 100vw;
@@ -112,13 +91,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     font-size: 2.2vh;
     position: absolute;
 }
-h1
-{
-    font-size: 10vh;
-    margin-left: 5vw;
-    margin-top: 3vh;
-    color: slategray;
-}
+
 .card_img
 {
     width: 23vw;
@@ -139,29 +112,33 @@ a:hover
     color: black;
 }
 
-#news
-{
-    /* padding-left: 33vw;   ........ no need of this because display is now changed to flex*/
-    /* width: 100vw;     ...  no need of this .. creating unnessary scrolable bar on homapage's bottom*/
-    height: 100vh;
-    background-color: #F0F8FE;
-}
-#news h1{
-    text-align: center;
-    font-size: 4rem;
-    
-}
 
-/* ------media queries------- */
+#above_news{
+    text-align: center;
+    color: slategray;
+    font-size: 4rem;
+} 
+
 @media screen and (max-width:860px) {
-    #news h1
-    {
-        font-size: 2rem; 
+    #section_with_cards{
+        flex-direction: column;
     }
+    .card{
+        margin: 0px;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    #above_news{
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+
+
        
 }
 #more_news{
     font-size: 2rem;
+    margin-top: 80vh;
 }
 
 #footer
@@ -271,13 +248,16 @@ a:hover
     background-color: #1c8adb;
 }
 .sign-form{
-    width:350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:450px;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
     background: #f0f0f0;
     padding:20px;
     text-align: center;
     margin: 5% auto 0;
-    border-radius: 2vw;
+    border-radius: 2rem;
 }
 .or{
     background:#f0f0f0;
@@ -413,6 +393,8 @@ hr{
 {
     width: 40%;
     padding: 40px;
+    border-radius: 2rem;
+    border: 2px solid rgb(87, 87, 148);
     background: #fff;
 }
 .contactForm h2
@@ -466,7 +448,6 @@ hr{
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 10px;
     font-size: 18px;
 }
 @media (max-width: 991px)

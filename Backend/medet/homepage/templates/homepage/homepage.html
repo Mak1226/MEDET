@@ -33,8 +33,7 @@
     {%endif%}
 </div>
 {%endif%}
-<div id="news">
-    <h1>News related to Health</h1>
+    <h1 id="above_news">News related to Health</h1>
     {%for article in articles%}
     <section id="section_with_cards">
         <div class="card">
@@ -69,5 +68,5 @@
     
     {%endfor%}
     <a href="{%url 'news'%}" id="more_news">Click here for More News</a>
-</div>
+
 {% endblock content%}
