@@ -35,7 +35,7 @@
             <p>{{medicine.dosage_and_administration.0}}</p>
             <br>
             <p>{{medicine.warnings.0}}</p>
-            <a href="{% url 'bookmark' medicine.openfda.spl_id.0  %}">Bookmark Medicine</a>
+            <a href="{% url 'remove_bookmark' medicine.openfda.spl_id.0  %}">Remove Bookmark</a>
             {%endfor%}
          </div>
     </div>

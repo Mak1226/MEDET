@@ -34,6 +34,7 @@ urlpatterns = [
     path('profile/doctor/',user_views.doctor,name="profile_doctor"),
     path('profile/schedule/',user_views.schedule,name="profile_schedule"),
     path('profile/reports/',user_views.med_report,name="profile_med_reports"),
+    path('profile/bookmarks/',user_views.bookmark_list,name="bookmark_list"),
 
     path('profile/doctor/<int:pk>/',DoctorDetailView.as_view(),name="profile_doc_detail"),
     path('profile/doctor/new/',DoctorCreateView.as_view(),name="profile_doc_create"),

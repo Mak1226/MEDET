@@ -14,23 +14,21 @@
 {%if user.is_authenticated %}
 <div id="medicine">
     <h1>Medicine Recommendations</h1>
-    {%if user.disease %}
-    <h1>{{user.disease.disease_name}}</h1>
-    {%else%}
-    <div class="card">
-        <h1>{{user.disease.disease_name}}</h1>
-        <img class="card_img" src="{%static 'homepage/GLYCODIN-SYRUP-100-ML.jpg'%}" alt="">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adip solo elit. Ratione rem libero quis necessitatibus illum tempore dolorum perferendis doloribus doloremque temporibus ad, quisquam repellendus cum ex inventore. Reiciendis earum ducimus dicta rerum deserunt! In nisi quo fuga iusto! Mollitia, saepe voluptatibus animi tenetur, dolore eaque sed illum, laudantium laborum cum magnam explicabo accusantium at obcaecati repellat doloremque temporibus consequuntur possimus rerum eius quidem quasi voluptate adipisci! Adipisci ipsum debitis earum minus.
-        </p>
-    </div>
-    <div class="card" id="wo">
-        <img class="card_img" src="{%static 'homepage/paracetamol-tablets_1618901822.jpg'%}" alt="">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adip solo elit. Ratione rem libero quis necessitatibus illum tempore dolorum perferendis doloribus doloremque temporibus ad, quisquam repellendus cum ex inventore. Reiciendis earum ducimus dicta rerum deserunt! In nisi quo fuga iusto! Mollitia, saepe voluptatibus animi tenetur, dolore eaque sed illum, laudantium laborum cum magnam explicabo accusantium at obcaecati repellat doloremque temporibus consequuntur possimus rerum eius quidem quasi voluptate adipisci! Adipisci ipsum debitis earum minus.
-        </p>
-    </div>
-    {%endif%}
+    {% for disease in diseases%}
+        <div class="card">
+            <h1> {{disease.openfda.generic_name.0}}</h1>
+            <br>
+            <h2>Manufacturer: {{disease.openfda.manufacturer_name.0}}</h2>
+            <br>
+            <h2>Brand Name: {{disease.openfda.brand_name.0}}</h2>
+            <br>
+            <br>
+            <a href="{% url 'med_read_more' disease.openfda.spl_id.0  %}" target="_blank">Read More</a>
+            <br>
+         </div>
+         <br>
+    {%endfor%}
+    
 </div>
 {%endif%}
 <div id="news">
@@ -50,22 +48,9 @@
         <p>{{article.description}}</p>
         <a href="{{article.url}}" target="_blank">Read Full Article</a>
     </div>
+    <br>
     {%endfor%}
-    {%for article in articles1%}
-    <div class="card" id="wo">
-        {% if article.urlToImage%}
-        <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
-        {%else%}
-        <img src="{% static 'homepage/no_img.jpg'%}" alt="">
-        {%endif%}
-        <h2> {{article.title}}</h2>
-        <br>
-        <h2>{{article.author}}</h2>
-        <br>
-        <p>{{article.description}}</p>
-        <a href="{{article.url}}" target="_blank">Read Full Article</a>
-    </div>
-    {%endfor%}
+    
     <br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <a href="{%url 'news'%}">More News</a>

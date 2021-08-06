@@ -1,10 +1,16 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail,BadHeaderError
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from users.models import Disease
 import requests
+from random import choice,sample
+from .models import Bookmark
+
 API_KEY='00926f1959524f2996e2c35b16eb80f3'
 
 # Create your views here.
@@ -14,11 +20,33 @@ def home(request):
     response=requests.get(url=url)
     data=response.json()
     articles=data['articles']
-    context={
-        'articles':articles[0:1],
-        'articles1':articles[1:2]
-        
-    }
+    if Disease.objects.filter(user=request.user.id):
+        url2=f'https://api.fda.gov/drug/label.json?search={choice(Disease.objects.filter(user=request.user.id))}&limit=10'
+        response2=requests.get(url2)
+        data2=response2.json()
+        if 'results' in data2:
+            middle=data2['results']
+            list_med=[]
+            for result in middle:
+                if 'generic_name' in result['openfda']:
+                    list_med.append(result)
+            context={
+                'articles':sample(articles,2),
+                'diseases':sample(list_med,2)
+            }
+    else:
+        url3=f'https://api.fda.gov/drug/label.json?search=fever&limit=10'
+        response3=requests.get(url3)
+        data3=response3.json()
+        middle=data3['results']
+        list_med=[]
+        for result in middle:
+            if 'generic_name' in result['openfda']:
+                list_med.append(result)
+        context={
+            'articles':sample(articles,2),
+            'diseases':sample(list_med,2)
+        }
     return render(request,"homepage/homepage.html",context)
 
 def news_all(request):
@@ -27,7 +55,7 @@ def news_all(request):
     data=response.json()
     articles=data['articles']
     context={
-        'articles':articles
+        'articles':articles,
     }
     return render(request,"homepage/news_all.html",context)
 
@@ -78,7 +106,6 @@ def search_med(request):
         return render(request,'homepage/search_medicine.html',{})
 
 def read_more(request,id):
-    print(id)
     url=f'https://api.fda.gov/drug/label.json?search={id}'
     response=requests.get(url=url)
     data=response.json()
@@ -87,3 +114,29 @@ def read_more(request,id):
         'medicines':medicines
     }
     return render(request,'homepage/med_read_more.html',context)
+
+@login_required
+def bookmark(request,id):
+    if Bookmark.objects.filter(spl_id=id):
+        return redirect('new_read_more',id)
+    else:
+        Bookmark.objects.create(user=request.user, spl_id=id)
+        messages.success(request,f"Medicine is Bookmarked")
+        return redirect('new_read_more',id)
+
+@login_required
+def remove_bookmark(request,id):
+    Bookmark.objects.filter(spl_id=id).delete()
+    return redirect('med_read_more',id)
+
+@login_required
+def new_read_more(request,id):
+    url=f'https://api.fda.gov/drug/label.json?search={id}'
+    response=requests.get(url=url)
+    data=response.json()
+    medicines=data['results']
+    context={
+        'medicines':medicines
+    }
+    return render(request,'homepage/med_bookmark_remove.html',context)
+    

@@ -1,0 +1,20 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div >
+        <h1>My Bookmarks</h1>
+        <br>
+        <br>
+        <ul>
+            {%if bookmarks%}
+            {% for bookmark in bookmarks%}
+            <li><a href="{%url 'new_read_more' bookmark.id %}" target="_blank" style="color: slategray;">{{bookmark.openfda.generic_name.0}}</a></li>
+            <br>
+            {%endfor%}
+            {%else%}
+            <h2>No Medicines</h2>
+            {%endif%}
+        </ul>
+    </div>
+
+{% endblock content%}

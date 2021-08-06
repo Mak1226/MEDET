@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Medicine,Disease,Doctor,Reports
 from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
 from django import forms
+from homepage.models import Bookmark
+import requests
 
 
 # Create your views here.
@@ -258,3 +260,13 @@ class ReportsDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         if self.request.user == reports.user:
             return True
         return False
+
+def bookmark_list(request):
+    bookmarks=Bookmark.objects.filter(user=request.user.id)
+    list_bookmark=[]
+    for bookmark in bookmarks:
+        url=f'https://api.fda.gov/drug/label.json?search={bookmark.spl_id}'
+        response=requests.get(url=url)
+        data=response.json()
+        list_bookmark.append(data['results'][0])
+    return render(request,'users/bookmarks_list.html',{'bookmarks':list_bookmark})
