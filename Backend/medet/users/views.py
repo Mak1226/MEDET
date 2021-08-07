@@ -265,8 +265,11 @@ def bookmark_list(request):
     bookmarks=Bookmark.objects.filter(user=request.user.id)
     list_bookmark=[]
     for bookmark in bookmarks:
-        url=f'https://api.fda.gov/drug/label.json?search={bookmark.spl_id}'
+        url=f'https://api.fda.gov/drug/label.json?search=openfda.spl_id:{bookmark.spl_id}&limit=20'
         response=requests.get(url=url)
         data=response.json()
-        list_bookmark.append(data['results'][0])
+        medicines=data['results']
+        for result in medicines:
+            if result['openfda']['spl_id'][0] == bookmark.spl_id:
+                list_bookmark.append(result)
     return render(request,'users/bookmarks_list.html',{'bookmarks':list_bookmark})

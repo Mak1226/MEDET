@@ -12,7 +12,6 @@
 <body>
     <div >
         <div class="search">
-            {%for medicine in medicines %}
             {% if messages %}
             {% for message in messages %}
             <div class="alert-{{message.tags}}">
@@ -36,7 +35,6 @@
             <br>
             <p>{{medicine.warnings.0}}</p>
             <a href="{% url 'bookmark' medicine.openfda.spl_id.0  %}">Bookmark Medicine</a>
-            {%endfor%}
          </div>
     </div>
     

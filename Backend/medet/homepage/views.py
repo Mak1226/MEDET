@@ -21,7 +21,7 @@ def home(request):
     data=response.json()
     articles=data['articles']
     if Disease.objects.filter(user=request.user.id):
-        url2=f'https://api.fda.gov/drug/label.json?search={choice(Disease.objects.filter(user=request.user.id))}&limit=10'
+        url2=f'https://api.fda.gov/drug/label.json?search=indications_and_usage:{choice(Disease.objects.filter(user=request.user.id))}&limit=20'
         response2=requests.get(url2)
         data2=response2.json()
         if 'results' in data2:
@@ -35,7 +35,8 @@ def home(request):
                 'diseases':sample(list_med,2)
             }
     else:
-        url3=f'https://api.fda.gov/drug/label.json?search=fever&limit=10'
+        common_disease=['fever','allergies','colds','diarrhea','headaches','stomach aches']
+        url3=f'https://api.fda.gov/drug/label.json?search=indications_and_usage:{choice(common_disease)}&limit=10'
         response3=requests.get(url3)
         data3=response3.json()
         middle=data3['results']
@@ -88,7 +89,7 @@ def search_med(request):
     
     if request.method=='POST':
         searched=request.POST['home_input']
-        url=f'https://api.fda.gov/drug/label.json?search={searched}&limit=20'
+        url=f'https://api.fda.gov/drug/label.json?search={searched}&limit=40'
         response=requests.get(url=url)
         data=response.json()
         if 'results' in data:
@@ -106,14 +107,22 @@ def search_med(request):
         return render(request,'homepage/search_medicine.html',{})
 
 def read_more(request,id):
-    url=f'https://api.fda.gov/drug/label.json?search={id}'
+    url=f'https://api.fda.gov/drug/label.json?search=openfda.spl_id:{id}&limit=20'
     response=requests.get(url=url)
     data=response.json()
     medicines=data['results']
-    context={
-        'medicines':medicines
-    }
-    return render(request,'homepage/med_read_more.html',context)
+    for result in medicines:
+        if result['openfda']['spl_id'][0] == id:
+            context={
+                'medicine':result
+            }
+    if request.user:
+        if Bookmark.objects.filter(user=request.user.id,spl_id=context['medicine']['openfda']['spl_id'][0]):
+            return render(request,'homepage/med_bookmark_remove.html',context)
+        else:
+            return render(request,'homepage/med_read_more.html',context)
+    else:
+        return render(request,'homepage/med_read_more.html',context)
 
 @login_required
 def bookmark(request,id):
@@ -131,12 +140,15 @@ def remove_bookmark(request,id):
 
 @login_required
 def new_read_more(request,id):
-    url=f'https://api.fda.gov/drug/label.json?search={id}'
+    url=f'https://api.fda.gov/drug/label.json?search=openfda.spl_id:{id}&limit=20'
     response=requests.get(url=url)
     data=response.json()
     medicines=data['results']
-    context={
-        'medicines':medicines
-    }
+    for result in medicines:
+        if result['openfda']['spl_id'][0] == id:
+            context={
+                'medicine':result
+            }
     return render(request,'homepage/med_bookmark_remove.html',context)
+
     

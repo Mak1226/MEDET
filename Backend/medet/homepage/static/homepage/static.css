@@ -141,9 +141,7 @@ a:hover
 
 #news
 {
-    /* padding-left: 33vw;   ........ no need of this because display is now changed to flex*/
-    /* width: 100vw;     ...  no need of this .. creating unnessary scrolable bar on homapage's bottom*/
-    height: 100vh;
+    
     background-color: #F0F8FE;
 }
 #news h1{
@@ -325,10 +323,6 @@ hr{
     text-align: center;
     margin: 2vh auto;
 }
-
-
-
-
 
 
 

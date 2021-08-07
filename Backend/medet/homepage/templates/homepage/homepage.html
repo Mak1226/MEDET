@@ -49,23 +49,6 @@
             <a href="{{article.url}}" target="_blank">Read Full Article</a>
         </div>
         {%endfor%}
-        {%for article in articles1%}
-        <div class="card">
-            {% if article.urlToImage%}
-            <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
-            {%else%}
-            <img src="{% static 'homepage/no_img.jpg'%}" alt="">
-            {%endif%}
-            <h2> {{article.title}}</h2>
-            <br>
-            <h2>{{article.author}}</h2>
-            <br>
-            <p>{{article.description}}</p>
-            <a href="{{article.url}}" target="_blank">Read Full Article</a>
-        </div>
-    </section>
-    
-    {%endfor%}
     <a href="{%url 'news'%}" id="more_news">Click here for More News</a>
 </div>
 {% endblock content%}

@@ -8,11 +8,11 @@
         <ul>
             {%if bookmarks%}
             {% for bookmark in bookmarks%}
-            <li><a href="{%url 'new_read_more' bookmark.id %}" target="_blank" style="color: slategray;">{{bookmark.openfda.generic_name.0}}</a></li>
+            <li><a href="{%url 'new_read_more' bookmark.openfda.spl_id.0 %}" style="color: slategray;">{{bookmark.openfda.generic_name.0}}</a></li>
             <br>
             {%endfor%}
             {%else%}
-            <h2>No Medicines</h2>
+            <h2>No Bookmarked Medicines</h2>
             {%endif%}
         </ul>
     </div>
