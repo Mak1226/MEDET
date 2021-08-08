@@ -82,21 +82,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
 }
 .card
 {
-    width: 50%;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 1vh 1vw;
-    margin: 3vh 5vw;
-    background-color: whitesmoke;
-    font-size: 2.2vh;
+    margin: 2vw;
     
-}
-
-.card_img
-{
-    width: 23vw;
-    padding: 1vh 1vw;
-    height: 30vh;
 }
 .card:hover
 {
@@ -112,17 +99,7 @@ a:hover
     color: black;
 }
 
-<<<<<<< HEAD
-#news
-{
-    
-    background-color: #F0F8FE;
-}
-#news h1{
-=======
-
 #above_news{
->>>>>>> a5219f0a4d0383f3c10323b8194e1117a35b433f
     text-align: center;
     color: slategray;
     font-size: 4rem;
@@ -149,15 +126,19 @@ a:hover
     font-size: 2rem;
     margin-top: 80vh;
 }
+#six
+{
+    display: inline-block;
+    margin-left: 100%;
 
+}
 #footer
 {
-    height: 40vh;
     background-color: #7393B3;
     color: whitesmoke;
-    padding-left: 5vw;
-    padding-top: 5vh;
 }
+div#footer > div.container {background-color:#7393B3;}
+
 #foo
 {
     border-bottom: 2px solid whitesmoke;
@@ -520,7 +501,7 @@ hr{
     padding: 1vh 1vw;
     height: 30vh;
 }
-#news_all
+.news
 {
     text-align: center;
     width: 100vw;

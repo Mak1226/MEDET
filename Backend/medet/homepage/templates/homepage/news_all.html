@@ -2,30 +2,24 @@
 {%load static%}
 {% block content%}
 <div id="news_all">
-    <h1>News</h1>
+    <h1 id="above_news">News</h1>
     <br>
     {%for article in articles%}
-    <div class="card_news">
-        {% if article.urlToImage%}
-        <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
+    <div class="card" style="width: 18rem;">
+        {%if article.urlToImage %}
+        <img src="{{article.urlToImage}}" class="card-img-top" alt="">
         {%else%}
-        <img src="{%static 'homepage/no_img.jpg'%}" alt="">
+        <img src="{%static 'homepage/no_img.jpg'%}" class="card-img-top" alt="">
         {%endif%}
-        <h2> {{article.title}}</h2>
-        <br>
-        <h2>{{article.author}}</h2>
-        <br>
-        <p>{{article.description}}</p>
-        <a href="{{article.url}}" target="_blank">Read Full Article</a>
+        <div class="card-body">
+        <h5 class="card-title">{{article.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
+        <p class="card-text">{{article.description}}</p>
+        <a href="{{article.url}}" class="btn btn-primary">Read More</a>
+        </div>
     </div>
-    <br>
-    <br>
     {%endfor%}
     
 </div>
-
-
-
-
 
 {% endblock content%}

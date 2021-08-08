@@ -2,7 +2,6 @@
 {% load crispy_forms_tags%}
 {%load static%}
 {% block content%}
-    <div >
         <form id="form" action="{% url 'search'%}" method="POST">
             {%csrf_token%}
             <section id="SearchEdit">
@@ -16,19 +15,16 @@
         <h1>Results</h1>
         {%for medicine in medicines%}
         {%if medicine.openfda.generic_name.0%}
-        <div class="search">
-            <h1> {{medicine.openfda.generic_name.0}}</h1>
-            <br>
-            <h2>Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h2>
-            <br>
-            <h2>Brand Name: {{medicine.openfda.brand_name.0}}</h2>
-            <br>
-            <a href="{% url 'med_read_more' medicine.openfda.spl_id.0 %}" >Read More</a>
-            <br>
-         </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{medicine.openfda.generic_name.0}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h6>
+            <p class="card-text"> Brand Name: {{medicine.openfda.brand_name.0}}</p>
+            <a href="{% url 'med_read_more' medicine.openfda.spl_id.0  %}" class="btn btn-primary" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
         {%endif%}
         {%endfor%}
         {%endif%}
-    </div>
 
 {% endblock content%}

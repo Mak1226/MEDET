@@ -12,42 +12,40 @@
     </form>
 </div>
 {%if user.is_authenticated %}
-<div id="medicine"><!-- not to touch -->
-    <h1>Medicine Recommendations</h1>
-    {% for disease in diseases%}
-        <div class="card">
-            <h1> {{disease.openfda.generic_name.0}}</h1>
-            <br>
-            <h2>Manufacturer: {{disease.openfda.manufacturer_name.0}}</h2>
-            <br>
-            <h2>Brand Name: {{disease.openfda.brand_name.0}}</h2>
-            <br>
-            <br>
-            <a href="{% url 'med_read_more' disease.openfda.spl_id.0  %}" target="_blank">Read More</a>
-            <br>
-         </div>
-         <br>
-    {%endfor%}
-    
-</div>
-{%endif%}
-    <h1 id="above_news">News related to Health</h1>
-    {%for article in articles%}
+<!-- not to touch -->
+    <<h1 id="above_news">Medicine Recommendations</h1>
     <section id="section_with_cards">
-        <div class="card">
-            {% if article.urlToImage%}
-            <img src="{{article.urlToImage}}" alt="" height="180px" width="200px">
-            {%else%}
-            <img src="{% static 'homepage/no_img.jpg'%}" alt="">
-            {%endif%}
-            <h2> {{article.title}}</h2>
-            <br>
-            <h2>{{article.author}}</h2>
-            <br>
-            <p>{{article.description}}</p>
-            <a href="{{article.url}}" target="_blank">Read Full Article</a>
-        </div>
+        {% for disease in diseases%}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{disease.openfda.generic_name.0}}</h5>
+                <p class="card-text">Manufacturer: {{disease.openfda.manufacturer_name.0}} 
+                    Brand Name: {{disease.openfda.brand_name.0}}
+                </p>
+                <a href="{% url 'med_read_more' disease.openfda.spl_id.0  %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
         {%endfor%}
-    <a href="{%url 'news'%}" id="more_news">Click here for More News</a>
-
+    </section>
+{%endif%}
+        <h1 id="above_news">News related to Health</h1>
+        <section id="section_with_cards">
+            {%for article in articles%}
+                <div class="card" style="width: 18rem;">
+                    {%if article.urlToImage %}
+                    <img src="{{article.urlToImage}}" class="card-img-top" alt="">
+                    {%else%}
+                    <img src="{%static 'homepage/no_img.jpg'%}" class="card-img-top" alt="">
+                    {%endif%}
+                    <div class="card-body">
+                    <h5 class="card-title">{{article.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
+                    <p class="card-text">{{article.description}}</p>
+                    <a href="{{article.url}}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            {%endfor%}
+        </section>
+        
+        <a href="{%url 'news'%}" class="btn btn-primary">Click here for More News</a>
 {% endblock content%}

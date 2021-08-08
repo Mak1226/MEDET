@@ -31,12 +31,12 @@ def home(request):
                 if 'generic_name' in result['openfda']:
                     list_med.append(result)
             context={
-                'articles':sample(articles,2),
-                'diseases':sample(list_med,2)
+                'articles':sample(articles,4),
+                'diseases':sample(list_med,4)
             }
     else:
         common_disease=['fever','allergies','colds','diarrhea','headaches','stomach aches']
-        url3=f'https://api.fda.gov/drug/label.json?search=indications_and_usage:{choice(common_disease)}&limit=10'
+        url3=f'https://api.fda.gov/drug/label.json?search=indications_and_usage:{choice(common_disease)}&limit=20'
         response3=requests.get(url3)
         data3=response3.json()
         middle=data3['results']
@@ -45,8 +45,8 @@ def home(request):
             if 'generic_name' in result['openfda']:
                 list_med.append(result)
         context={
-            'articles':sample(articles,2),
-            'diseases':sample(list_med,2)
+            'articles':sample(articles,4),
+            'diseases':sample(list_med,4)
         }
     return render(request,"homepage/homepage.html",context)
 

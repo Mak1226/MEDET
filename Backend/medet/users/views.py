@@ -58,18 +58,19 @@ def profile_update(request):
     context={'u_form':u_form,'p_form':p_form}
     return render(request,'users/profile_update.html',context)
 
+@login_required
 def medicine(request):
     context={'medicines':Medicine.objects.filter(user=request.user.id)[::-1]}
     return render(request,'users/medcines.html',context)
-
+@login_required
 def doctor(request):
     context={'doctors':Doctor.objects.filter(user=request.user.id)[::-1]}
     return render(request,'users/doctors.html',context)
-
+@login_required
 def schedule(request):
     context={'schedules':Medicine.objects.filter(user=request.user.id)[::-1]}
     return render(request,'users/schedules.html',context)
-
+@login_required
 def disease(request):
     context={'diseases':Disease.objects.filter(user=request.user.id)[::-1]}
     return render(request,'users/diseases.html',context)
@@ -260,7 +261,7 @@ class ReportsDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         if self.request.user == reports.user:
             return True
         return False
-
+@login_required
 def bookmark_list(request):
     bookmarks=Bookmark.objects.filter(user=request.user.id)
     list_bookmark=[]
