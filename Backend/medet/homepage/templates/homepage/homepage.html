@@ -13,8 +13,10 @@
 </div>
 {%if user.is_authenticated %}
 <!-- not to touch -->
-    <<h1 id="above_news">Medicine Recommendations</h1>
-    <section id="section_with_cards">
+<div id="medicine">
+    <h1 id="above_news">Medicine Recommendations</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+   
         {% for disease in diseases%}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
@@ -26,10 +28,13 @@
                 </div>
             </div>
         {%endfor%}
-    </section>
+
+    </div>
+</div>
 {%endif%}
-        <h1 id="above_news">News related to Health</h1>
-        <section id="section_with_cards">
+        <div id="news">
+            <h1 id="above_news">News related to Health</h1>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
             {%for article in articles%}
                 <div class="card" style="width: 18rem;">
                     {%if article.urlToImage %}
@@ -45,7 +50,9 @@
                     </div>
                 </div>
             {%endfor%}
-        </section>
-        
-        <a href="{%url 'news'%}" class="btn btn-primary">Click here for More News</a>
+        </div>
+        <div id="six">
+        <a href="{%url 'news'%}" class="btn btn-primary" >Click here for More News</a>
+        </div>
+        </div>
 {% endblock content%}

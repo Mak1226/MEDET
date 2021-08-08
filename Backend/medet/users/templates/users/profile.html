@@ -64,14 +64,10 @@
             <a href="{%url 'bookmark_list'%}">Bookmarked medicine List</a>
             <div id="data">
                 <h1 id="med_data">Medical data</h1>
-                <br>
-                <br>
-                <br>
+                
                 
                 <a href="{% url 'profile_medicine'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My medicines</h3>
-                    <br>
-                    <br>
                     <ul>
                         {% for medicine in medicines%}
                         <li>{{medicine.medicine_name}}</li>
@@ -80,8 +76,6 @@
                 </div></a>
                 <a href="{% url 'profile_doctor'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My Doctors</h3>
-                    <br>
-                    <br>
                     <ul>
                         {% for doctor in doctors%}
                         <li>{{doctor.doctor_name}}</li>
@@ -90,8 +84,6 @@
                 </div></a>
                 <a href="{% url 'profile_disease'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My disease</h3>
-                    <br>
-                    <br>
                     <ul>
                         {% for disease in diseases%}
                         <li>{{disease.disease_name}}</li>
@@ -100,8 +92,6 @@
                 </div></a>
                 <a href="{% url 'profile_schedule'%}" style="color: slategray;"><div class="card_profile">
                     <h3>My Schedule</h3>
-                    <br>
-                    <br>
                     <ul>
                         {% for schedule in schedules%}
                         <li>{{schedule.schedule}}</li>

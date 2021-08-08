@@ -43,7 +43,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
 }
 
 
-
+#search
+{
+    padding: 2%;
+}
 #SearchEdit{
     display: flex;
     justify-content: center;
@@ -58,6 +61,16 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     border-radius: 0 1vw 1vw 0;
     padding-right: 1.5vh;
     background: white;
+}
+#homepage_search_bt{
+    padding: 0px;
+    margin: 0px;
+    height: 7vh;
+    border:1px 1px 1px 0px solid black;
+    border-radius: 0 1vw 1vw 0;
+    padding-right: 1.5vh;
+    background: white;
+    
 }
 #SearchEdit img{
     height: 40px;
@@ -74,12 +87,18 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     border: 1px solid white;
     outline: none;
 }
-
-#medicine
+#home_inpu
 {
-    width: 100vw;
-    height: 100vh;
+    width: 50vw;
+    border-radius: 1vw 0 0 1vw;
+    height: 7vh;
+    font-size: 4vh;
+    padding-left: 2vw;
+    margin-top: 4vh;
+    border: 1px 0px 1px 1px solid black;
+    outline: none;
 }
+
 .card
 {
     margin: 2vw;
@@ -90,15 +109,20 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     border: 0px;
     background-color: #FFFAEF;
 }
-#section_with_cards{
-    display: flex;
-    flex-grow: 1;
-}
 a:hover
 {
     color: black;
 }
-
+#six
+{
+ display: flex;
+ margin-right: 6%;
+ justify-content: flex-end;
+}
+#medicine
+{
+    background-color:  #DBF3FA;
+}
 #above_news{
     text-align: center;
     color: slategray;
@@ -106,9 +130,6 @@ a:hover
 } 
 
 @media screen and (max-width:860px) {
-    #section_with_cards{
-        flex-direction: column;
-    }
     .card{
         margin: 0px;
         width: 100%;
@@ -119,18 +140,11 @@ a:hover
         margin-top: 1rem;
     }
 
-
        
 }
 #more_news{
     font-size: 2rem;
     margin-top: 80vh;
-}
-#six
-{
-    display: inline-block;
-    margin-left: 100%;
-
 }
 #footer
 {

@@ -4,8 +4,9 @@
 <div id="news_all">
     <h1 id="above_news">News</h1>
     <br>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
     {%for article in articles%}
-    <div class="card" style="width: 18rem;">
+    <div class="card h-100">
         {%if article.urlToImage %}
         <img src="{{article.urlToImage}}" class="card-img-top" alt="">
         {%else%}
@@ -19,6 +20,7 @@
         </div>
     </div>
     {%endfor%}
+    </div>
     
 </div>
 
