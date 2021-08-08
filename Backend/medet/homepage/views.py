@@ -95,12 +95,14 @@ def search_med(request):
         if 'results' in data:
             medicines=data['results']
             context={
-                'medicines':medicines
+                'medicines':medicines,
+                'searched':searched
             }
         else:
             medicines=data['error']
             context={
-                'medicines':medicines
+                'medicines':medicines,
+                'searched':searched
             }
         return render(request,'homepage/search_medicine.html',context)
     else:
