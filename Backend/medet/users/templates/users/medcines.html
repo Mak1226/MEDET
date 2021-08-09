@@ -1,9 +1,12 @@
 {% extends  "homepage/base.html" %}
 {% load crispy_forms_tags%}
 {% block content%}
-    <div >
-        <h1>My medicines</h1>
-        <a class="Sign-btn"  href="{%url 'profile_med_create' %}">Add Medicine</a>
+    <div style="min-height: 100vh;">
+        <h1 id="above_news">My medicines</h1>
+        <div class="button_for_adding">
+            <a class=" btn btn-primary btn-lg"  href="{%url 'profile_med_create' %}">Add Medicine</a>
+        </div>
+        
         <br>
         <br>
         <ul>

@@ -49,12 +49,12 @@
             <h2>Send Message</h2>
             {%csrf_token%}
             {{form | crispy}}
-              <div class="inputBox">
-                  <input type="submit" name="" value="send">
-              </div>
+            <br>
+                  <button class="btn btn-info btn-md" type="submit" name="" value="send">Send</button>
           </form>
       </div>
     </div>
+    <br><br>
   </section>
 
 

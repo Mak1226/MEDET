@@ -48,7 +48,7 @@ class Disease(models.Model):
 
 class Medicine(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    medicine_name=models.TextField(null=True)
+    medicine_name=models.CharField(max_length=200,null=True)
     doctor_name=models.ForeignKey(Doctor,on_delete=models.CASCADE,null=True,blank=True)
     disease_name=models.ForeignKey(Disease,on_delete=models.CASCADE,null=True,blank=True)
     schedule=models.TextField(null=True,blank=True)
