@@ -109,7 +109,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     word-wrap: none;
     
 }
-.card:hover
+#card:hover
 {
     border: 0px;
     background-color: #FFFAEF;
@@ -123,7 +123,7 @@ a:hover
 {
  display: flex;
  margin-right: 6%;
- justify-content: flex-end;
+ justify-content: center;
 }
 #medicine
 {
@@ -134,23 +134,13 @@ a:hover
     color: slategray;
     font-size: 4rem;
 } 
-
-@media screen and (max-width:860px) {
-    .card{
-        margin: 0px;
-        width: 100%;
-        margin-top: 1rem;
-    }
-    #above_news,#giving_color{
-        font-size: 2rem;
-    }
-    
-    #giving_color{
-        border-top: 1.5rem solid #DBF3FA;
-    }
-
-       
+.row
+{
+    display: flex;
+    justify-content: space-evenly;
 }
+
+
 #more_news{
     font-size: 2rem;
     margin-top: 80vh;
@@ -161,6 +151,14 @@ a:hover
     color: whitesmoke;
 }
 div#footer > div.container {background-color:#7393B3;}
+#heading
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 #foo
 {
@@ -457,27 +455,7 @@ hr{
     cursor: pointer;
     font-size: 18px;
 }
-@media (max-width: 991px)
-{
-    .contact
-    {
-        padding: 50px;
-    }
-    .container
-    {
-        flex-direction: column;
-    }
-    .container .contactInfo
-    {
-        margin-bottom: 40px;
-    }
-    .container .contactInfo,
-    .contactForm
-    {
-        width: 100%;
-    }
-    
-}
+
 
 #update
 {
@@ -494,10 +472,8 @@ hr{
 }
 .search
 {
-    border: 2px solid slategray;
-    border-radius: 10px;
     padding:10px;
-    margin: 10px;
+    
 }
 
 .card_news
@@ -543,14 +519,14 @@ hr{
     flex-grow: 1;
     max-width: 80%;
     border-radius:0.5rem;
-    box-shadow: 0px 0px 5px 3px #442a2a;
+    /* box-shadow: 0px 0px 5px 3px #442a2a; */
     
 }
 .profile_divs{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 270px;
+    /* width: 270px; */
     padding: 1%;
     /* height:270px; */
     margin : auto 0;
@@ -563,7 +539,7 @@ hr{
 
 #main_sidebar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 #sidebar{
     display: flex;
@@ -574,7 +550,53 @@ hr{
 #abcde{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 #abcde>div{
-    margin:0px;
+    width: 350px;
+    align-items: flex-start;
+}
+@media screen and (max-width:860px) {
+    .card{
+        margin: 0px;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    #above_news,#giving_color{
+        font-size: 2rem;
+    }
+    
+    #giving_color{
+        border-top: 1.5rem solid #DBF3FA;
+    }
+    #main_div_profile{
+        flex-direction: column;
+        align-items:center;
+    }
+    .profile_divs{
+        margin:1rem;
+        justify-content: space-evenly;
+    }
+       
+}
+@media (max-width: 991px)
+{
+    .contact
+    {
+        padding: 50px;
+    }
+    .container
+    {
+        flex-direction: column;
+    }
+    .container .contactInfo
+    {
+        margin-bottom: 40px;
+    }
+    .container .contactInfo,
+    .contactForm
+    {
+        width: 100%;
+    }
+    
 }

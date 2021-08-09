@@ -2,7 +2,7 @@
 {% load crispy_forms_tags%}
 {%load static%}
 {% block content%}
-       <div id="search">
+       <div id="search" style="min-height: 100vh;">
         <form id="form" action="{% url 'search'%}" method="POST">
             {%csrf_token%}
             <section id="SearchEdit">
@@ -22,7 +22,7 @@
         {%for medicine in medicines%}
         {%if medicine.openfda.generic_name.0%}
         <div class="col">
-            <div class="card h-100">
+            <div class="card h-100" id="card">
                 <div class="card-body">
                 <h5 class="card-title">{{medicine.openfda.generic_name.0}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h6>

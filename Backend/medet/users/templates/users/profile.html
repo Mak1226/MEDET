@@ -11,7 +11,7 @@
             {%endif%}
             <div id ="main_sidebar">
                 <div id="sidebar">
-                    <a href="{%url 'profile_med_reports'%}" style="width: 140px;"class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Medical Reports</a>
+                    <a href="{%url 'profile_med_reports'%}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Medical Reports</a>
                     <br>
                     <a href="{%url 'profile_update'%}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Update Profile</a>
                     <br>
@@ -84,9 +84,9 @@
 
         
         </div>
-        
+        <br><br>
             <div id="data">
-                <h1 id="med_data">Medical data</h1>
+                <h1 id="above_news">Medical data</h1>
                 <div class=" row row-cols-1 row-cols-md-4 g-4">
                 <a href="{% url 'profile_medicine'%}" style="color: slategray;">
                     <div class="card h-100" style="width: 18rem;">
@@ -145,6 +145,7 @@
             </div>
         </div>
     </div>
+    <br>
         
 {% endblock content%}
 
