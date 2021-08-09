@@ -290,7 +290,9 @@ hr{
     font-size: 2vh;
     border: 1px solid black;
     outline: none;
+    margin: 0 auto;
     margin-top: 10px;
+    
     width: 285px;
     padding-left: 1vw;
 }
@@ -556,7 +558,23 @@ hr{
     width: 350px;
     align-items: flex-start;
 }
+.button_for_adding{
+    display: flex;
+    justify-content: space-around;
+}
+.button_for_adding>a{
+    padding-left: 2rem;
+    padding-right: 2rem;;
+}
+#report_pic{
+    height:100%;
+    width:100%;
+}
 @media screen and (max-width:860px) {
+    .button_for_adding{
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
     .card{
         margin: 0px;
         width: 100%;

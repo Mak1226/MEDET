@@ -1,9 +1,12 @@
 {% extends  "homepage/base.html" %}
 {% load crispy_forms_tags%}
 {% block content%}
-    <div >
-        <h1>My Reports</h1>
-        <a class="Sign-btn"  href="{%url 'profile_report_create' %}">Add Report</a>
+    <div style="min-height: 100vw;">
+        <h1 id ="above_news">My Reports</h1>
+        <div class="button_for_adding">
+            <a class=" btn btn-primary btn-lg"  href="{%url 'profile_report_create' %}">Add Report</a>
+        </div>
+
         <br>
         <br>
         <ul>
@@ -13,7 +16,7 @@
             <br>
             {%endfor%}
             {%else%}
-            <h3>No reports</h3>
+            <h3>Click on add report to add a report</h3>
             {%endif%}
         </ul>
     </div>

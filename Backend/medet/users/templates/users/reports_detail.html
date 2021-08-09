@@ -2,7 +2,7 @@
 {% load crispy_forms_tags%}
 {% block content%}
     <div >
-        <h1>{{object.title}}</h1>
+        <h1 id="above_news">{{object.title}}</h1>
         <br>
         <br>
         {%if object.description%}
@@ -10,13 +10,13 @@
         {%else%}
         <h2>Description: </h2>
         {%endif%}
-        <img  src="{{object.medical_report.url}}" alt="">
+        <img id="report_pic"  src="{{object.medical_report.url}}" alt="">
         <br>
         <br>
-        <a class="Sign-btn"  href="{{object.medical_report.url}}" download>Download Report</a>
-        <a class="Sign-btn"  href="{%url 'profile_report_update' object.id %}">Update Report</a>
-        <a class="Sign-btn"  href="{%url 'profile_report_delete' object.id %}">Delete Report</a>
+        <a class=" btn btn-primary btn-lg"  href="{{object.medical_report.url}}" download>Download Report</a>
+        <a class=" btn btn-primary btn-lg"  href="{%url 'profile_report_update' object.id %}">Update Report</a>
+        <a class=" btn btn-primary btn-lg"  href="{%url 'profile_report_delete' object.id %}">Delete Report</a>
         
     </div>
-
+<br><br><br><br>
 {% endblock content%}

@@ -1,7 +1,7 @@
 {% extends  "homepage/base.html" %}
 {% load crispy_forms_tags%}
 {% block content%}
-    <div >
+    <div style="min-height: 100vh;" >
         <h1>{{object.medicine_name}}</h1>
         <br>
         <br>
@@ -13,8 +13,8 @@
         <h2>Prescribed by: {{object.doctor_name}}</h2>
         <br>
         <br>
-        <a class="Sign-btn"  href="{%url 'profile_med_update' object.id %}">Update Medicine</a>
-        <a class="Sign-btn"  href="{%url 'profile_med_delete' object.id %}">Delete Medicine</a>
+        <a class=" btn btn-primary btn-md"  href="{%url 'profile_med_update' object.id %}">Update Medicine</a>
+        <a class=" btn btn-primary btn-md"  href="{%url 'profile_med_delete' object.id %}">Delete Medicine</a>
         
     </div>
 
