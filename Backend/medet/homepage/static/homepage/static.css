@@ -172,10 +172,12 @@ div#footer > div.container {background-color:#7393B3;}
 }
 #profile
 {
-    margin-top: 0vh;
+    margin:3rem;
+    margin-top: 0px;
+    
     color: slategray;
     padding-top: 4vh;
-    width: 100%;
+    
     background-color: #F0F8FE;
 }
 #med_data
@@ -575,7 +577,7 @@ hr{
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
-    .card{
+    .card ,#profile{
         margin: 0px;
         width: 100%;
         margin-top: 1rem;
@@ -595,6 +597,7 @@ hr{
         margin:1rem;
         justify-content: space-evenly;
     }
+
        
 }
 @media (max-width: 991px)
@@ -611,10 +614,12 @@ hr{
     {
         margin-bottom: 40px;
     }
-    .container .contactInfo,
-    .contactForm
+    .container .contactInfo
     {
         width: 100%;
     }
     
+}
+.contactForm{
+    width:450px;
 }
