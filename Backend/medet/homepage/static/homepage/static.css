@@ -51,7 +51,17 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     justify-content: center;
     align-items:flex-end ; 
 } 
-
+#data .card
+{
+    background-color: #B7E9F7 ;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2vw;
+}
+#data .card:hover
+{
+    background-color: #92DFF3 ;
+}
 #homepage_search_btn{
     padding: 0px;
     margin: 0px;
@@ -103,12 +113,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     padding-bottom: 2.5vh;
 }
 
-.card
-{
-    margin: 2vw;
-    word-wrap: none;
-    
-}
+
 #card:hover
 {
     border: 0px;
@@ -128,6 +133,7 @@ a:hover
 #medicine
 {
     background-color:  #DBF3FA;
+    padding-bottom: 20px;
 }
 #above_news,#giving_color{
     text-align: center;
@@ -166,8 +172,9 @@ div#footer > div.container {background-color:#7393B3;}
     width: 87vw;
 }
 #pic
-{
-    width: 50%;
+{   
+    width: 325px;
+    height: 325px;
     border-radius: 50%;
 }
 #profile
@@ -304,15 +311,7 @@ hr{
 }
 .alert-success
 {
-    background-color: rgb(140, 221, 194);
-    color: rgb(36, 59, 36);
-    width: 29vw;
-    height: 6vh;
-    font-size: 2.5vh;
-    padding: 1vh;
-    border-radius: 2px;
-    text-align: center;
-    margin: 2vh auto;
+   text-align: center
 }
 
 
@@ -514,10 +513,9 @@ hr{
 
 #main_div_profile{
     display: flex;
-    justify-content: space-around;
-    min-height: 350px;
+    justify-content: center;
+    min-height: 500px;
     flex-grow: 1;
-    max-width: 80%;
     border-radius:0.5rem;
     /* box-shadow: 0px 0px 5px 3px #442a2a; */
     
@@ -535,6 +533,15 @@ hr{
     background-color: white;
     box-shadow: 0px 0px 5px 3px #888;
 }
+#abcde .profile_divs
+{
+    height: 202px;
+    margin-left: 30px;
+}
+#div_with_image
+{
+    width: 340px;
+}
 
 
 #main_sidebar{
@@ -544,7 +551,8 @@ hr{
 #sidebar{
     display: flex;
     flex-direction: column;
-    width:150px;
+    justify-content: start;
+    width:200px;
     word-wrap: break-word;
 }
 #abcde{
@@ -556,12 +564,7 @@ hr{
     width: 350px;
     align-items: flex-start;
 }
-@media screen and (max-width:860px) {
-    .card{
-        margin: 0px;
-        width: 100%;
-        margin-top: 1rem;
-    }
+@media screen and (max-width:950px) {
     #above_news,#giving_color{
         font-size: 2rem;
     }
@@ -572,15 +575,31 @@ hr{
     #main_div_profile{
         flex-direction: column;
         align-items:center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     }
+    
     .profile_divs{
         margin:1rem;
         justify-content: space-evenly;
     }
-       
-}
-@media (max-width: 991px)
-{
+    #abcde .profile_divs
+    {
+        width: 340px;
+        margin-left: 12px;
+    }
+    #main_sidebar
+    {
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+    }
+    #sidebar
+    {
+        flex-direction: row;
+        width: auto;
+    }
     .contact
     {
         padding: 50px;
@@ -598,5 +617,7 @@ hr{
     {
         width: 100%;
     }
+   
+    
     
 }
