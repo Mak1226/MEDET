@@ -9,101 +9,142 @@
             </div>
             {%endfor%} 
             {%endif%}
-            <img id="pic" src="{{user.profile.image.url}}" alt="">
-            {% if user.first_name %}
-            <h2 class="username">Name: {{user.first_name}}</h1>
-            {%else%}
-            <h2 class="username">Username: {{user.username }}</h1>
-            {%endif%}
-            {% if user.profile.age %}
-            <h2 >Age: {{user.profile.age}}</h1>
-            {%else%}
-            <h2 >Age: </h1>
-            {%endif%}
-            {% if user.profile.date_of_birth %}
-            <h2 >Date Of Birth: {{user.profile.date_of_birth}}</h1>
-            {%else%}
-            <h2 >Date Of Birth: </h1>
-            {%endif%}
-            {%if user.email%} 
-            <h2 class="email">Email: {{user.email}}</h2>
-            {%endif%}
-            {% if user.profile.contact %}
-            <h2 >Contacts: {{user.profile.contact}}</h1>
-            {%else%}
-            <h2 >Contacts: </h1>
-            {%endif%}
-            {% if user.profile.address %}
-            <h2 >Address: {{user.profile.address}}</h1>
-            {%else%}
-            <h2 >Address: </h1>
-            {%endif%}
-            {% if user.profile.blood_type %}
-            <h2 >Blood Type: {{user.profile.blood_type}}</h1>
-            {%else%}
-            <h2 >Blood Type: </h1>
-            {%endif%}
-            {% if user.profile.allergy %}
-            <h2 >Allergies: {{user.profile.allergy}}</h1>
-            {%else%}
-            <h2 >Allergies: </h1>
-            {%endif%}
-            {% if user.profile.weight %}
-            <h2 >Weight(in Kg): {{user.profile.weight}}</h1>
-            {%else%}
-            <h2 >Weight(in Kg): </h1>
-            {%endif%}
-            {% if user.profile.height %}
-            <h2 >Height(in cm): {{user.profile.height}}</h1>
-            {%else%}
-            <h2 >Height(in cm): </h1>
-            {%endif%}
-            <br>
-            <a href="{%url 'profile_update'%}">Update Profile</a>
-            <br>
-            <a href="{%url 'bookmark_list'%}">Bookmarked medicine List</a>
-            <div id="data">
-                <h1 id="med_data">Medical data</h1>
-                
-                
-                <a href="{% url 'profile_medicine'%}" style="color: slategray;"><div class="card_profile">
-                    <h3>My medicines</h3>
-                    <ul>
-                        {% for medicine in medicines%}
-                        <li>{{medicine.medicine_name}}</li>
-                        {%endfor%}
-                    </ul>
-                </div></a>
-                <a href="{% url 'profile_doctor'%}" style="color: slategray;"><div class="card_profile">
-                    <h3>My Doctors</h3>
-                    <ul>
-                        {% for doctor in doctors%}
-                        <li>{{doctor.doctor_name}}</li>
-                        {%endfor%}
-                    </ul>
-                </div></a>
-                <a href="{% url 'profile_disease'%}" style="color: slategray;"><div class="card_profile">
-                    <h3>My disease</h3>
-                    <ul>
-                        {% for disease in diseases%}
-                        <li>{{disease.disease_name}}</li>
-                        {%endfor%}
-                    </ul>
-                </div></a>
-                <a href="{% url 'profile_schedule'%}" style="color: slategray;"><div class="card_profile">
-                    <h3>My Schedule</h3>
-                    <ul>
-                        {% for schedule in schedules%}
-                        <li>{{schedule.schedule}}</li>
-                        {%endfor%}
-                    </ul>
-                </div></a>
+            <div id ="main_sidebar">
+                <div id="sidebar">
+                    <a href="{%url 'profile_med_reports'%}" style="width: 140px;"class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Medical Reports</a>
+                    <br>
+                    <a href="{%url 'profile_update'%}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Update Profile</a>
+                    <br>
+                    <a href="{%url 'bookmark_list'%}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">Bookmarkes</a>
+                </div>
+                <div id="main_div_profile">
+                    <div class="profile_divs ">
+                        <img id="pic" src="{{user.profile.image.url}}" alt="">
+                        {% if user.first_name %}
+                        <h6 class="username">Name: {{user.first_name}}</h6>
+                        {%else%}
+                        <h6 class="username">Username: {{user.username }}</h6>
+                        {%endif%}
+                        {% if user.profile.age %}
+                        <h6 >Age: {{user.profile.age}}</h6>
+                        {%else%}
+                        <h6 >Age: </h6>
+                        {%endif%}
+                        {% if user.profile.date_of_birth %}
+                        <h6 >Date Of Birth: {{user.profile.date_of_birth}}</h6>
+                        {%else%}
+                        <h6 >Date Of Birth: </h6>
+                        {%endif%}
+                        
+                    </div>
+                    <div id="abcde" >
+                        <div class="profile_divs">
+                            {%if user.email%} 
+                            <h6 class="email">Email: {{user.email}}</h6>
+                            {%else%}
+                            <h6 >Email: </h6>
+                            {%endif%}
+                            {% if user.profile.contact %}
+                            <h6 >Contacts: {{user.profile.contact}}</h6>
+                            {%else%}
+                            <h6 >Contacts: </h6>
+                            {%endif%}
+                            {% if user.profile.address %}
+                            <h6 >Address: {{user.profile.address}}</h6>
+                            {%else%}
+                            <h6 >Address: </h6>
+                            {%endif%}
+                        </div>
+                        <div class="profile_divs">
+                            {% if user.profile.blood_type %}
+                            <h6 >Blood Type: {{user.profile.blood_type}}</h6>
+                            {%else%}
+                            <h6 >Blood Type: </h6>
+                            {%endif%}
+                            {% if user.profile.allergy %}
+                            <h6 >Allergies: {{user.profile.allergy}}</h6>
+                            {%else%}
+                            <h6 >Allergies: </h6>
+                            {%endif%}
+                            {% if user.profile.weight %}
+                            <h6 >Weight(in Kg): {{user.profile.weight}}</h6>
+                            {%else%}
+                            <h6 >Weight(in Kg): </h6>
+                            {%endif%}
+                            {% if user.profile.height %}
+                            <h6 >Height(in cm): {{user.profile.height}}</h6>
+                            {%else%}
+                            <h6 >Height(in cm): </h6>
+                            {%endif%}
+                        </div>
+                    </div>
 
-                <br>
-                <br>
-                <br><br>
-                <a href="{%url 'profile_med_reports'%}">Medical Reports</a>
-            </div>
+                    </div>
+                </div>
+
+        
         </div>
         
+            <div id="data">
+                <h1 id="med_data">Medical data</h1>
+                <div class=" row row-cols-1 row-cols-md-4 g-4">
+                <a href="{% url 'profile_medicine'%}" style="color: slategray;">
+                    <div class="card h-100" style="width: 18rem;">
+                        <div class="card-body">
+                        <h3 class="card-title">My medicines</h3>
+                        <p class="card-text">
+                            <ul>
+                                {% for medicine in medicines%}
+                                <li>{{medicine.medicine_name}}</li>
+                                {%endfor%}
+                            </ul>
+                        </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{% url 'profile_doctor'%}" style="color: slategray;">
+                    <div class="card h-100" style="width: 18rem;">
+                        <div class="card-body">
+                        <h3 class="card-title">My Doctors</h3>
+                        <p class="card-text">
+                            <ul>
+                                {% for doctor in doctors%}
+                                <li>{{doctor.doctor_name}}</li>
+                                {%endfor%}
+                            </ul>
+                        </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{% url 'profile_disease'%}" style="color: slategray;">
+                    <div class="card h-100" style="width: 18rem;">
+                        <div class="card-body">
+                    <h3 class="card-title">My disease</h3>
+                    <p class="card-text">
+                        <ul>
+                            {% for disease in diseases%}
+                            <li>{{disease.disease_name}}</li>
+                            {%endfor%}
+                        </ul>
+                    </p>
+                    </div></div>
+                </a>
+                <a href="{% url 'profile_schedule'%}" style="color: slategray;">
+                    <div class="card h-100" style="width: 18rem;">
+                        <div class="card-body">
+                    <h3 class="card-title">My Schedule</h3>
+                    <p class="card-text">
+                        <ul>
+                            {% for schedule in schedules%}
+                            <li>{{schedule.schedule}}</li>
+                            {%endfor%}
+                        </ul>
+                    </p>
+                    </div></div>
+                </a>
+            </div>
+        </div>
+    </div>
+        
 {% endblock content%}
+
