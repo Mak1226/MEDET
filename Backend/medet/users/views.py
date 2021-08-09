@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .forms import UserRegistrationForm, UserUpdateForm,ProfileUpdateForm
@@ -10,7 +11,6 @@ from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
 from django import forms
 from homepage.models import Bookmark
 import requests
-
 
 # Create your views here.
 
@@ -261,6 +261,8 @@ class ReportsDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         if self.request.user == reports.user:
             return True
         return False
+
+
 @login_required
 def bookmark_list(request):
     bookmarks=Bookmark.objects.filter(user=request.user.id)

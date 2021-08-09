@@ -109,7 +109,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light{
     word-wrap: none;
     
 }
-.card:hover
+#card:hover
 {
     border: 0px;
     background-color: #FFFAEF;
@@ -123,7 +123,7 @@ a:hover
 {
  display: flex;
  margin-right: 6%;
- justify-content: flex-end;
+ justify-content: center;
 }
 #medicine
 {
@@ -134,6 +134,11 @@ a:hover
     color: slategray;
     font-size: 4rem;
 } 
+.row
+{
+    display: flex;
+    justify-content: space-evenly;
+}
 
 @media screen and (max-width:860px) {
     .card{
@@ -157,6 +162,14 @@ a:hover
     color: whitesmoke;
 }
 div#footer > div.container {background-color:#7393B3;}
+#heading
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 #foo
 {
@@ -490,10 +503,8 @@ hr{
 }
 .search
 {
-    border: 2px solid slategray;
-    border-radius: 10px;
     padding:10px;
-    margin: 10px;
+    
 }
 
 .card_news

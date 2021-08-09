@@ -1,6 +1,13 @@
 {% extends  "homepage/base.html" %}
 {% load crispy_forms_tags%}
 {% block content%}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert-{{message.tags}}">
+                {{message}}
+            </div>
+            {%endfor%} 
+            {%endif%}
         <div id="profile">
             <form  method="POST" enctype="multipart/form-data">
                 {%csrf_token%} 

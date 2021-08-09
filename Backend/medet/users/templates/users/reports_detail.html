@@ -13,6 +13,7 @@
         <img  src="{{object.medical_report.url}}" alt="">
         <br>
         <br>
+        <a class="Sign-btn"  href="{{object.medical_report.url}}" download>Download Report</a>
         <a class="Sign-btn"  href="{%url 'profile_report_update' object.id %}">Update Report</a>
         <a class="Sign-btn"  href="{%url 'profile_report_delete' object.id %}">Delete Report</a>
         

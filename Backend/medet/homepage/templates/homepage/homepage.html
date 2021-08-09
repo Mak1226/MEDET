@@ -18,7 +18,7 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
    
         {% for disease in diseases%}
-            <div class="card" style="width: 18rem;">
+            <div class="card" id="card" style="width: 18rem;">
                 <div class="card-body">
                 <h5 class="card-title">{{disease.openfda.generic_name.0}}</h5>
                 <p class="card-text">Manufacturer: {{disease.openfda.manufacturer_name.0}} 
@@ -36,7 +36,7 @@
             <h1 id="above_news">News related to Health</h1>
         <div class="row row-cols-1 row-cols-md-4 g-4">
             {%for article in articles%}
-                <div class="card" style="width: 18rem;">
+                <div class="card" id="card" style="width: 18rem;">
                     {%if article.urlToImage %}
                     <img src="{{article.urlToImage}}" class="card-img-top" alt="">
                     {%else%}
