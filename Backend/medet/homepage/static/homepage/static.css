@@ -585,6 +585,10 @@ hr{
     width:450px;
 
 }
+.Sign-btn:hover
+{
+    color: white;
+}
 .things
 {
     padding: 50px 100px

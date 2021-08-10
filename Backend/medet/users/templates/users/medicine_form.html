@@ -7,6 +7,12 @@
         <h2>
             Medicine
         </h2>
+        <small>Fields marked with * are mandatory</small>
+        <br>
+        <small>
+            To add Disease/Doctor name first create their respective profile under My Diseases and My Doctors section Respectively
+        </small>
+        <br>
         <form class="form" method="POST" enctype="multipart/form-data">
             {%csrf_token%} 
                     {{form|crispy}}

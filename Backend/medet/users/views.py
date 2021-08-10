@@ -57,6 +57,7 @@ def profile_update(request):
         p_form=ProfileUpdateForm(instance=request.user.profile)
     context={'u_form':u_form,'p_form':p_form}
     return render(request,'users/profile_update.html',context)
+    
 
 @login_required
 def medicine(request):

@@ -19,7 +19,7 @@
                 <div id="main_div_profile">
                     <div class="profile_divs " id="div_with_image">
                         <img src="{{user.profile.image.url}}" id="pic" alt="..." >
-                        
+                        <br>
                         {% if user.first_name %}
                         <h6 class="username">Name: {{user.first_name}}</h6>
                         {%else%}
@@ -158,4 +158,3 @@
     <br>
 
 {% endblock content%}
-

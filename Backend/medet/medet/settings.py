@@ -25,7 +25,7 @@ SECRET_KEY = 'w$(h^6&vals0zr3dr&c7((_qb-cnoxu=^sn#x@z9pf(fjnk(_n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -146,5 +147,15 @@ EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER=''
-EMAIL_HOST_PASSWORD=''
+EMAIL_HOST_USER=os.environ.get('MEDET_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('MEDET_PASSWORD')
+
+AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STROAGE_BUCKET_NAME="medet-files"
+AWS_QUERYSTRING_AUTH=False
+
+AWS_S3_FILE_OVERWRITE=False
+AWS_DEFAULT_ACL=None
+DEFAULT_FILE_STORAGE='medet.storages.MediaStore'
+
