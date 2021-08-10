@@ -10,7 +10,7 @@ for running backend server
 first have python installed on your computer and then open the directory in which there is requirements.txt file
 in the terminal run the following code
 
-          python -m pip install requirements.txt
+          python -m pip install -r requirements.txt
          
 (note: make python3 as python alias, if you havent done already, if facing difficulty in doing that use pyhton3 instead of python everywhere)
           
