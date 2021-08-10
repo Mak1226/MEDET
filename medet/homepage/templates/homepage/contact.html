@@ -1,0 +1,61 @@
+{% extends 'homepage/base.html'%}
+{% load crispy_forms_tags%}
+{%load static%}
+{% block content%}
+<section class="contact">
+    <div class="content">
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert-{{message.tags}}">
+            {{message}}
+        </div>
+        {%endfor%} 
+        {%endif%}
+      <h2>Contact Us</h2>
+      <p>
+        Have some Problems with the Website? Or would like to give some Suggestions?
+        We are all ears, Drop a message!!
+      </p>
+    </div>
+    <div class="container">
+      <div class="contactInfo">
+        <div class="box">
+          <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+          <div class="text">
+            <h2>Address</h2>
+            <p>
+              Indian Institute of Technology Palakkad
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+          <div class="text">
+            <h2>Phone</h2>
+            <p>+91 12345 56789</p>
+          </div>
+        </div>
+        <div class="box">
+          <br>
+          <div class="icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
+          <div class="text">
+            <h2>Email</h2>
+            <p>MEDET.mail124@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="contactForm">
+          <form class="form" method="POST">
+            <h2>Send Message</h2>
+            {%csrf_token%}
+            {{form | crispy}}
+            <br>
+                  <button class="btn btn-info btn-md" type="submit" name="" value="send">Send</button>
+          </form>
+      </div>
+    </div>
+    <br><br>
+  </section>
+
+
+{% endblock content%}

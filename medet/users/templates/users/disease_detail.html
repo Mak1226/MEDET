@@ -1,0 +1,19 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div style="min-height: 100vh;">
+        <h1>{{object.disease_name}}</h1>
+        <br>
+        <br>
+        <h2>Disease Type(infectious,deficiency,hereditary): {{object.disease_type}}</h2>
+        <h2>Onset Of Disease: {{object.onset_of_disease}}</h2>
+        <h2>Symptoms Of Disease: {{object.symptoms}}</h2>
+        <h2>Affected Area: {{object.affected_area}}</h2>
+        <br>
+        <br>
+        <a class=" btn btn-primary btn-md"  href="{%url 'profile_disease_update' object.id %}">Update </a>
+        <a class=" btn btn-primary btn-md"  href="{%url 'profile_disease_delete' object.id %}">Delete </a>
+        
+    </div>
+
+{% endblock content%}

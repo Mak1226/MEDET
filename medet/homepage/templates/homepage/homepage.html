@@ -1,0 +1,60 @@
+{% extends 'homepage/base.html'%}
+{%load static%}
+{% block content%}
+
+<div id="second">
+    <form id="form" action="{% url 'search'%}" method="POST">
+        {%csrf_token%}
+        <section id="SearchEdit">
+            <input id="home_input" name="home_input" type="text" name="search" placeholder="Search">
+            <button type="submit" id="homepage_search_btn"><img src="{% static 'homepage/R.png' %}"></button>
+        </section>
+    </form>
+</div>
+{%if user.is_authenticated %}
+
+<div id="medicine">
+    <h1 id="above_news">Medicine Recommendations</h1>
+    <div class=" row row-cols-1 row-cols-md-4 g-4">
+   
+        {% for disease in diseases%}
+            <div class="card" id="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{disease.openfda.generic_name.0}}</h5>
+                <p class="card-text">Manufacturer: {{disease.openfda.manufacturer_name.0}} 
+                    Brand Name: {{disease.openfda.brand_name.0}}
+                </p>
+                <a href="{% url 'med_read_more' disease.openfda.spl_id.0  %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        {%endfor%}
+
+    </div>
+</div>
+{%endif%}
+        <div id="news">
+            <h1 id="giving_color" >News related to Health</h1>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {%for article in articles%}
+                <div class="card" id="card" style="width: 18rem;">
+                    {%if article.urlToImage %}
+                    <img src="{{article.urlToImage}}" class="card-img-top" alt="">
+                    {%else%}
+                    <img src="{%static 'homepage/no_img.jpg'%}" class="card-img-top" alt="">
+                    {%endif%}
+                    <div class="card-body">
+                    <h5 class="card-title">{{article.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
+                    <p class="card-text">{{article.description}}</p>
+                    <a href="{{article.url}}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+        <br>
+        <div id="six">
+        <a href="{%url 'news'%}" class="btn btn-primary" >Click here for More News</a>
+        </div>
+        </div>
+        <br>
+{% endblock content%}

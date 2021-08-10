@@ -1,0 +1,23 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div style="min-height: 100vh;">
+        <h1 id="above_news">My Diseases</h3>
+        <div class="button_for_adding">
+            <a class=" btn btn-primary btn-lg"  href="{%url 'profile_disease_create' %}">Add Diseases</a>
+        </div>
+        <br>
+        <br>
+        <ul>
+            {%if diseases%}
+            {% for disease in diseases%}
+            <li><a href="{%url 'profile_disease_detail' disease.id %}" style="color: slategray;">{{disease.disease_name}}</a></li>
+            <br>
+            {%endfor%}
+            {%else%}
+            <h2>No diseases</h2>
+            {%endif%}
+        </ul>
+    </div>
+
+{% endblock content%}

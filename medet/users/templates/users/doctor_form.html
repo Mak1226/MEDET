@@ -1,0 +1,21 @@
+{% extends "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{%load static%}
+{% block content%}
+<div class="body">
+    <div class="sign-form" >
+        <h2>
+            Doctor
+        </h2>
+        <small>Fields marked with * are mandatory</small>
+        <br>
+        <form class="form" method="POST" enctype="multipart/form-data">
+            {%csrf_token%} 
+                    {{form|crispy}}
+                    <br>
+                    <br>
+            <button type="submit" class="Sign-btn">Add</button>
+        </form>
+    </div>
+</div>
+{% endblock content%}

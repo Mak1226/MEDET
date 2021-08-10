@@ -1,0 +1,24 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div style="min-height: 100vw;">
+        <h1 id ="above_news">My Reports</h1>
+        <div class="button_for_adding">
+            <a class=" btn btn-primary btn-lg"  href="{%url 'profile_report_create' %}">Add Report</a>
+        </div>
+
+        <br>
+        <br>
+        <ul>
+            {%if reports%}
+            {% for report in reports%}
+            <li><a href="{%url 'profile_report_detail' report.id%}" style="color: slategray;">{{report.title}}</a></li>
+            <br>
+            {%endfor%}
+            {%else%}
+            <h3>Click on add report to add a report</h3>
+            {%endif%}
+        </ul>
+    </div>
+
+{% endblock content%}

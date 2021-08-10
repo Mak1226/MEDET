@@ -1,0 +1,47 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{%load static%}
+{% block content%}
+       <div id="search" style="min-height: 100vh;">
+        <form id="form" action="{% url 'search'%}" method="POST">
+            {%csrf_token%}
+            <section id="SearchEdit">
+                <input id="home_inpu" name="home_input" type="text" name="search" placeholder="Search">
+                <button type="submit" id="homepage_search_bt"><img src="{% static 'homepage/R.png' %}"></button>
+            </section>
+        </form>
+        {%if medicines.code %}
+        <h1>NOT FOUND</h1>
+        {%else%}
+        <h1>Results For: "{{searched}}"</h1>
+
+        
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            
+
+        {%for medicine in medicines%}
+        {%if medicine.openfda.generic_name.0%}
+        <div class="col">
+            <div class="card h-100" id="card">
+                <div class="card-body">
+                <h5 class="card-title">{{medicine.openfda.generic_name.0}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h6>
+                <p class="card-text"> Brand Name: {{medicine.openfda.brand_name.0}}</p>
+                <a href="{% url 'med_read_more' medicine.openfda.spl_id.0  %}" class="btn btn-primary" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+        </div>
+
+
+       </div>
+
+
+
+        
+        
+
+{% endblock content%}

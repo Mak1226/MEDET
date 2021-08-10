@@ -1,0 +1,160 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+        <div id="profile">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert-{{message.tags}}">
+                {{message}}
+            </div>
+            {%endfor%} 
+            {%endif%}
+            <div id ="main_sidebar">
+                <div id="sidebar">
+                    <a href="{%url 'profile_update'%}" class="list-group-item list-group-item-action" tabindex="-1" role="button" aria-disabled="true"  style="width: 200px;">Update Profile</a>
+                    <a href="{%url 'profile_med_reports'%}" class="list-group-item list-group-item-action" tabindex="-1" role="button" aria-disabled="true" style="width: 200px;">Medical Reports</a>
+                    
+                    <a href="{%url 'bookmark_list'%}" class="list-group-item list-group-item-action" tabindex="-1" role="button" aria-disabled="true" style="width: 200px;">Bookmarks</a>
+                </div>
+                <div id="main_div_profile">
+                    <div class="profile_divs " id="div_with_image">
+                        <img src="{{user.profile.image.url}}" id="pic" alt="..." >
+                        <br>
+                        {% if user.first_name %}
+                        <h6 class="username">Name: {{user.first_name}}</h6>
+                        {%else%}
+                        <h6 class="username">Username: {{user.username }}</h6>
+                        {%endif%}
+                        {% if user.profile.age %}
+                        <h6 >Age: {{user.profile.age}}</h6>
+                        {%else%}
+                        <h6 >Age: </h6>
+                        {%endif%}
+                        {% if user.profile.date_of_birth %}
+                        <h6 >Date Of Birth: {{user.profile.date_of_birth}}</h6>
+                        {%else%}
+                        <h6 >Date Of Birth: </h6>
+                        {%endif%}
+                        
+                    </div>
+                    <div id="abcde" >
+                        <div class="profile_divs" style="margin-bottom: -7px;">
+                            <h3 class="card-title">Contact Details</h3>
+                            <br>
+                            {%if user.email%} 
+                            <h6 class="email">Email: {{user.email}}</h6>
+                            {%else%}
+                            <h6 >Email: </h6>
+                            {%endif%}
+                            {% if user.profile.contact %}
+                            <h6 >Contacts: {{user.profile.contact}}</h6>
+                            {%else%}
+                            <h6 >Contacts: </h6>
+                            {%endif%}
+                            {% if user.profile.address %}
+                            <h6 >Address: {{user.profile.address}}</h6>
+                            {%else%}
+                            <h6 >Address: </h6>
+                            {%endif%}
+                        </div>
+                        <div class="profile_divs">
+                            <h3 class="card-title">Common Info</h3>
+                            <br>
+                            {% if user.profile.blood_type %}
+                            <h6 >Blood Type: {{user.profile.blood_type}}</h6>
+                            {%else%}
+                            <h6 >Blood Type: </h6>
+                            {%endif%}
+                            {% if user.profile.allergy %}
+                            <h6 >Allergies: {{user.profile.allergy}}</h6>
+                            {%else%}
+                            <h6 >Allergies: </h6>
+                            {%endif%}
+                            {% if user.profile.weight %}
+                            <h6 >Weight(in Kg): {{user.profile.weight}}</h6>
+                            {%else%}
+                            <h6 >Weight(in Kg): </h6>
+                            {%endif%}
+                            {% if user.profile.height %}
+                            <h6 >Height(in cm): {{user.profile.height}}</h6>
+                            {%else%}
+                            <h6 >Height(in cm): </h6>
+                            {%endif%}
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+
+        
+            </div>
+            <br><br>
+            <div id="data">
+                <h1 id="above_news">Medical data</h1>
+                <div class=" row row-cols-1 row-cols-md-4 g-4">
+
+                
+                    <a href="{% url 'profile_medicine'%}" style="color: slategray;">
+                        <div class="card h-100">
+                            <div class="card-body">
+                            <h3 class="card-title">My medicines</h3>
+                            <p class="card-text">
+                                <ul>
+                                    {% for medicine in medicines%}
+                                    <li>{{medicine.medicine_name}}</li>
+                                    {%endfor%}
+                                </ul>
+                            </p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{% url 'profile_doctor'%}" style="color: slategray;">
+                        <div class="card h-100">
+                            <div class="card-body">
+                            <h3 class="card-title">My Doctors</h3>
+                            <p class="card-text">
+                                <ul>
+                                    {% for doctor in doctors%}
+                                    <li>{{doctor.doctor_name}}</li>
+                                    {%endfor%}
+                                </ul>
+                            </p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{% url 'profile_disease'%}" style="color: slategray;">
+                        <div class="card h-100">
+                            <div class="card-body">
+                        <h3 class="card-title">My disease</h3>
+                        <p class="card-text">
+                            <ul>
+                                {% for disease in diseases%}
+                                <li>{{disease.disease_name}}</li>
+                                {%endfor%}
+                            </ul>
+                        </p>
+                        </div></div>
+                    </a>
+                    <a href="{% url 'profile_schedule'%}" style="color: slategray;">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">My Schedule</h3>
+                                <p class="card-text">
+                                    <ul>
+                                        {% for schedule in schedules%}
+                                        <li>{{schedule.schedule}}</li>
+                                        {%endfor%}
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <br>
+        
+    <br>
+    <br>
+
+{% endblock content%}

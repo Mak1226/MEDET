@@ -1,0 +1,34 @@
+{% extends 'homepage/base.html'%}
+{%load static%}
+{% block content%}
+
+    <div >
+        <div class="search" style="background-color: #F5FCFF;">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert-{{message.tags}}">
+                {{message}}
+            </div>
+            {%endfor%} 
+            {%endif%}
+            <h1> {{medicine.openfda.generic_name.0}}</h1>
+            <br>
+            <h2>Manufacturer: {{medicine.openfda.manufacturer_name.0}}</h2>
+            <br>
+            <h2>Brand Name: {{medicine.openfda.brand_name.0}}</h2>
+            <br>
+            <p>{{medicine.indications_and_usage.0}}</p>
+            <br>
+            <p>{{medicine.precautions.0}}</p>
+            <br>
+            <p>{{medicine.description.0}}</p>
+            <br>
+            <p>{{medicine.dosage_and_administration.0}}</p>
+            <br>
+            <p>{{medicine.warnings.0}}</p>
+            <a href="{% url 'bookmark' medicine.openfda.spl_id.0  %}">Bookmark Medicine</a>
+         </div>
+    </div>
+    
+    {% endblock content%}
+    

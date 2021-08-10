@@ -1,0 +1,24 @@
+{% extends  "homepage/base.html" %}
+{% load crispy_forms_tags%}
+{% block content%}
+    <div style="min-height: 100vh;">
+        <h1 id="above_news">My Doctors</h1>
+        <div class="button_for_adding">
+            <a class=" btn btn-primary btn-lg" href="{%url 'profile_doc_create' %}">Add Doctors</a>
+        </div>
+        
+        <br>
+        <br>
+        <ul>
+            {%if doctors%}
+            {% for doctor in doctors%}
+            <li><a href="{%url 'profile_doc_detail' doctor.id%}" style="color: slategray;">{{doctor.doctor_name}}</a></li>
+            <br>
+            {%endfor%}
+            {%else%}
+            <h2>No Doctors</h2>
+            {%endif%}
+        </ul>
+    </div>
+
+{% endblock content%}
