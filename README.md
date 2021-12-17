@@ -1,4 +1,9 @@
 # MEDET
+
+The fully functional website can be seen on the following link:
+
+https://medet124.pythonanywhere.com/
+
 Design a website for people to login and get all the details of the medical conditions , medicines they are prescribed, when to eat the medicine. These entries will be provided by the user only which will be saved in the database and can be edited later on. the front home page has a search option to search for medicines, it will also give some medicine recommendations based on the diseases entered in their profile, and it will also show some news related to health. we want to have such a website as people tend to forget about names of medicines and stuff, so they can login and can tell all about their medical history just by looking at the website
 
 
