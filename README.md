@@ -4,10 +4,16 @@ The fully functional website can be seen on the following link:
 
 https://medet124.pythonanywhere.com/
 
-Design a website for people to login and get all the details of the medical conditions , medicines they are prescribed, when to eat the medicine. These entries will be provided by the user only which will be saved in the database and can be edited later on. the front home page has a search option to search for medicines, it will also give some medicine recommendations based on the diseases entered in their profile, and it will also show some news related to health. we want to have such a website as people tend to forget about names of medicines and stuff, so they can login and can tell all about their medical history just by looking at the website
+A website where you can search for various medicines, their uses , side effects etc, make your own profile, book mark medicine, have notes on medicine schedule, the list of doctors, list of medicines, and list of various details about the dieases etc.
 
+this website also has a medicine recommendation system which recommends medicines based on the diseases entered in your profile,
 
-For now we will simply use html, css with some bootstrap classes
+and has news section from where people can get updates about the news related to health.
+
+this website uses two API's
+one for news(https://newsapi.org/) and other for the database of medicine(https://open.fda.gov/apis/)
+
+This site uses HTML,CSS with some bootstrapping for frontend
 
 And django in backend
 
